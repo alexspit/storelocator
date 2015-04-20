@@ -191,10 +191,8 @@
                                          <select id="country" name="country" class="form-control">
                                             <option selected disabled>Country</option>
                                             <option>Malta</option>
-                                            <option>Italy</option>
-                                            <option>Spain</option>
-                                            <option>Italy</option>
-                                            <option>United Kingdom</option>
+                                            <option>Gozo</option>
+                                            <option>Comino</option>  
                                         </select>         
                                    </div>
                                    
@@ -216,6 +214,8 @@
                                  
                                     
                                    <a class="btn btn-theme-bg pull-right">Next</a>
+                                   
+                                   <div id="current"></div>
                                    <div class="clearfix"></div>
                                                                               
                                 </div>                                            
@@ -291,20 +291,36 @@
         <!--popup js-->
         <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
-        <!--customizable plugin edit according to your needs-->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYlhbi8Dcj0i8uF22gccZ9NsM-zwQDolM"></script>
+       
+       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYlhbi8Dcj0i8uF22gccZ9NsM-zwQDolM"></script>
         <script src="js/custom.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            function initialize() {
-              var mapOptions = {
-                center: { lat: -34.397, lng: 150.644},
-                zoom: 8
-              };
-              var map = new google.maps.Map(document.getElementById('map-canvas'),
-                  mapOptions);
-            }
-            google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
+     <!--   <script type="text/javascript">
+              
+                    function initialize() {
+                      var mapOptions = {
+                        zoom: 15,
+                        center: new google.maps.LatLng(35.8745649,  14.5167721)
+                      };
+
+                      var map = new google.maps.Map(document.getElementById('map-canvas'),
+                          mapOptions);
+                    }
+
+                    function loadScript() {
+                      var script = document.createElement('script');
+                      script.type = 'text/javascript';
+                      script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
+                          '&signed_in=true&callback=initialize';
+                      document.body.appendChild(script);
+                    }
+                    
+
+                    window.onload = loadScript;
+
+    </script>-->
+        
+   
+       
 
 
     </body>
