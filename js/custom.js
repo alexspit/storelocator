@@ -203,9 +203,11 @@ $(document).ready(function() {
                 $("#city").blur( function( event ) {
                     event.preventDefault();
 			var geocoder = new google.maps.Geocoder();    // instantiate a geocoder object
-			
+			var street = document.getElementById( "street" ).value;
+                        var city = document.getElementById( "city" ).value;
+                        
 			// Get the user's inputted address
-			var address = document.getElementById( "city" ).value;
+			var address = city+", "+country;
                         //var address = $(this).text();
 			// Make asynchronous call to Google geocoding API
 			geocoder.geocode( { 'address': address }, function(results, status) {
@@ -249,9 +251,9 @@ $(document).ready(function() {
 		switch ( addr_type )
 		{
 		case "country"	: zoom = 11; break;		// user specified a state
-		case "locality"						: zoom = 13; break;		// user specified a city/town
+		case "locality"						: zoom = 14; break;		// user specified a city/town
 		case "street_address"				: zoom = 15; break;
-                case "route"				: zoom = 15; break;// user specified a street address
+                case "route"				: zoom = 17; break;// user specified a street address
 		}
 		map.setZoom( zoom );
 	
@@ -295,12 +297,27 @@ $(document).ready(function() {
 		google.maps.event.addListener( marker, 'click', function() { infowindow.open( map, marker ); });
                 
                 google.maps.event.addListener(marker, 'dragend', function(evt){
-                document.getElementById('current').innerHTML = '<p>Latitude: ' + evt.latLng.lat().toFixed(3) + ' Longitude: ' + evt.latLng.lng().toFixed(3) + '</p>';
+               // document.getElementById('current').innerHTML = '<p>Latitude: ' + evt.latLng.lat().toFixed(3) + ' Longitude: ' + evt.latLng.lng().toFixed(3) + '</p>';
+                $("#lat").val(evt.latLng.lat());
+                $("#lng").val(evt.latLng.lng());
+                
+                $("#full_lat").val(evt.latLng.lat());
+                $("#full_lng").val(evt.latLng.lng());
                 });
 
-                google.maps.event.addListener(marker, 'dragstart', function(evt){
-                document.getElementById('current').innerHTML = '<p>Currently dragging marker...</p>';
+                google.maps.event.addListener(marker, 'drag', function(evt){
+                $("#lat").val(evt.latLng.lat());
+                $("#lng").val(evt.latLng.lng());
                 });
+                google.maps.event.addListener(marker, 'dragstart', function(evt){
+               // document.getElementById('current').innerHTML = '<p>Currently dragging marker...</p>';
+                });
+                
+                var lat = marker.getPosition().lat();
+                var lng = marker.getPosition().lng();
+                
+                $("#lat").val(lat);
+                $("#lng").val(lng);
 	}
 
 	

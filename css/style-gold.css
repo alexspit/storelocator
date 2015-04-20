@@ -2885,9 +2885,11 @@ min-height:100%;
    position:relative;
 }
 main{
-padding-bottom: 310px;
+padding-bottom: 20px;
 }
 
 #locationform .form-control{
     margin-bottom: 10px;
 }
+
+ #map-canvas { height: 500px; }

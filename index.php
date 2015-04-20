@@ -35,9 +35,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-         <style type="text/css">
-      #map-canvas { height: 500px; }
-    </style>
+      
     </head>
     <body>
         
@@ -54,7 +52,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand animated slideInLeft" href="index.html"><img src="img/logo.png" alt="Top Store Locator"></a>
+						<a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Top Store Locator"></a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -211,6 +209,16 @@
                                    <div class="col-md-12">
                                        <input type="text" id="zip" name="zip" class="form-control" placeholder="ZIP Code">          
                                    </div>
+                                    
+                                   <div class="col-md-6">
+                                       <input type="number" id="lat" name="lat" class="form-control" disabled placeholder="Latitude">     
+                                       <input type="hidden" id="full_lat" name="full_lat">  
+                                   </div>
+                                   <div class="col-md-6">
+                                       <input type="number" id="lng" name="lng" class="form-control" disabled placeholder="Longitude">    
+                                       <input type="hidden" id="full_lng" name="full_lng">  
+                                   </div>
+                                 
                                  
                                     
                                    <a class="btn btn-theme-bg pull-right">Next</a>
