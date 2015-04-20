@@ -2887,3 +2887,7 @@ min-height:100%;
 main{
 padding-bottom: 310px;
 }
+
+#locationform .form-control{
+    margin-bottom: 10px;
+}

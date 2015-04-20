@@ -12,7 +12,7 @@
         <link href="css/style-gold.css" rel="stylesheet" type="text/css" media="screen">
         
         <!-- font awesome for icons -->
-        <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <!-- flex slider css -->
         <link href="css/flexslider.css" rel="stylesheet" type="text/css" media="screen">
         <!-- animated css  -->
@@ -35,7 +35,9 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-
+         <style type="text/css">
+      #map-canvas { height: 500px; }
+    </style>
     </head>
     <body>
         
@@ -52,7 +54,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Top Store Locator"></a>
+						<a class="navbar-brand animated slideInLeft" href="index.html"><img src="img/logo.png" alt="Top Store Locator"></a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -62,12 +64,12 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle " data-toggle="dropdown">Manage Store<i class="fa fa-angle-down"></i></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="portfolio-2.html">Editors</a></li>
-									<li><a href="portfolio-3.html">Products</a></li>
-									<li><a href="portfolio-4.html">Locations</a></li>
-									<li><a href="portfolio-single.html">Gallery</a></li>
-									<li><a href="portfolio-single.html">Social Media</a></li>
-									<li><a href="portfolio-single.html">Opening Hours</a></li>
+									<li><a href="editors.php">Editors</a></li>
+									<li><a href="products.php">Products</a></li>
+									<li><a href="locations.php">Locations</a></li>
+									<li><a href="gallery.php">Gallery</a></li>
+									<li><a href="socialmedia.php">Social Media</a></li>
+									<li><a href="openinghours.php">Opening Hours</a></li>
 									
 									
 								</ul>
@@ -75,16 +77,16 @@
 							<li class="dropdown ">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ratings <i class="fa fa-angle-down"></i></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="blog-full.html">Overview</a></li>
-									<li><a href="blog-leftimg.html">Respond</a></li>
+									<li><a href="ratings.php">Overview</a></li>
+									<li><a href="respond.php">Respond</a></li>
 									
 								</ul>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Analytics <i class="fa fa-angle-down"></i></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="about.html">Overview</a></li>
-									<li><a href="me.html">Products</a></li>
+									<li><a href="analytics.html">Overview</a></li>
+									<li><a href="productanalytics.html">Products</a></li>
 									
 								</ul>
 							</li>
@@ -106,6 +108,36 @@
 									</li><!--.drop form search-->
 								</ul><!--.drop menu-->
 							</li>
+                                                        <li class="dropdown">
+                                                            <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
+                                                            <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
+                                                                <form action="login.php" role="form">
+                                                                    <h4>Signin</h4>
+
+                                                                    <div class="form-group">
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                            <input type="text" class="form-control" placeholder="Username">
+                                                                        </div>
+                                                                        <br>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                                            <input type="password" class="form-control" placeholder="Password">
+                                                                        </div>
+                                                                        <div class="checkbox pull-left">
+                                                                            <label>
+                                                                                <input type="checkbox"> Remember me
+                                                                            </label>
+                                                                        </div>
+                                                                        <a class="btn btn-theme-bg pull-right">Login</a>
+                                                                        <!--                                        <button type="submit" class="btn btn-theme pull-right">Login</button>                 -->
+                                                                        <div class="clearfix"></div>
+                                                                        <hr>
+                                                                        <p>Don't have an account? <a href="register.php">Register Now</a></p>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </li>
 								
 						</ul>
 					</div><!--/.nav-collapse -->
@@ -129,13 +161,73 @@
                     </div>
 		</div>
             </div><!--breadcrumbs-->
-            <div class="divide80"></div>
+            <div class="divide20"></div>
 			
             <div class="container">
-		<h4>CONTENT</h4>
-            </div>
+		
+                
+                <div class="row">
+                     <div class="col-md-4">
+                            <form action="locationform.php" role="form">
+                                <h4>Location</h4>
+
+                                <div class="form-group" id="locationform">
+                                   <div class="col-md-12">
+                                       <input type="text" id="storename" name="storename" class="form-control" placeholder="Store Name">          
+                                   </div>
+                                    
+                                   <div class="col-md-12">
+                                         <select id="category" name="category" class="form-control">
+                                            <option selected disabled>Category</option>
+                                            <option>Restaurants</option>
+                                            <option>Car Repairs</option>
+                                            <option>Insurance</option>
+                                            <option>Hotel</option>
+                                            <option>Confectionary</option>
+                                        </select>         
+                                   </div>
+                                    
+                                   <div class="col-md-12">
+                                         <select id="country" name="country" class="form-control">
+                                            <option selected disabled>Country</option>
+                                            <option>Malta</option>
+                                            <option>Italy</option>
+                                            <option>Spain</option>
+                                            <option>Italy</option>
+                                            <option>United Kingdom</option>
+                                        </select>         
+                                   </div>
+                                   
+                                   <div class="col-md-12">
+                                       <input type="text" id="city" name="city" class="form-control" placeholder="City">          
+                                   </div>
+                                   
+                                   <div class="col-md-12">
+                                       <input type="text" id="street" name="street" class="form-control" placeholder="Street">          
+                                   </div>
+                                    
+                                   <div class="col-md-12">
+                                       <input type="text" id="floor" name="floor" class="form-control" placeholder="Floor/Block">          
+                                   </div>
+                                    
+                                   <div class="col-md-12">
+                                       <input type="text" id="zip" name="zip" class="form-control" placeholder="ZIP Code">          
+                                   </div>
+                                 
+                                    
+                                   <a class="btn btn-theme-bg pull-right">Next</a>
+                                   <div class="clearfix"></div>
+                                                                              
+                                </div>                                            
+                            </form>
+                    </div>
+                    <div class="col-md-8 hidden-sm hidden-xs">
+                        
+                         <div id="map-canvas"></div>
+                    </div>
+                </div>
             
-            <div class="divide60"></div>
+            
 	</main><!--END MAIN-->
 		
         
@@ -200,7 +292,19 @@
         <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
         <!--customizable plugin edit according to your needs-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYlhbi8Dcj0i8uF22gccZ9NsM-zwQDolM"></script>
         <script src="js/custom.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            function initialize() {
+              var mapOptions = {
+                center: { lat: -34.397, lng: 150.644},
+                zoom: 8
+              };
+              var map = new google.maps.Map(document.getElementById('map-canvas'),
+                  mapOptions);
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
 
 
     </body>
