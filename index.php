@@ -42,7 +42,7 @@
         <div id="wrapper">
         <!--navigation -->
         <!-- Static navbar -->
-		<header>
+	<header>
 			<div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
 				<div class="container">
 					<div class="navbar-header">
@@ -52,7 +52,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="ASSAN"></a>
+						<a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Top Store Locator"></a>
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -111,30 +111,35 @@
 					</div><!--/.nav-collapse -->
 				</div>
 			</div><!--.navbar-default-->
-		</header>
-		<main>
-			<div class="breadcrumb-wrap">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6">
-							<h4>Create a Store</h4>
-						</div>
-						<div class="col-sm-6 hidden-xs text-right">
-							<ol class="breadcrumb">
-								<li><a href="index.html">Home</a></li>
-								<li>Create</li>
-							</ol>
-						</div>
-					</div>
-				</div>
-			</div><!--breadcrumbs-->
-			<div class="divide80"></div>
-			<div class="container">
-				<h4>CONTENT</h4>
-			</div>
-			<div class="divide60"></div>
-		</main>
-		<footer id="footer">
+	</header><!--END HEADER-->
+        
+	<main>
+            <div class="breadcrumb-wrap">
+		<div class="container">
+                    <div class="row">
+			<div class="col-sm-6">
+                            <h4>Create a Store</h4>
+                        </div>
+			<div class="col-sm-6 hidden-xs text-right">
+                            <ol class="breadcrumb">
+                                <li><a href="index.html">Home</a></li>
+                                <li>Create</li>
+                            </ol>
+                        </div>
+                    </div>
+		</div>
+            </div><!--breadcrumbs-->
+            <div class="divide80"></div>
+			
+            <div class="container">
+		<h4>CONTENT</h4>
+            </div>
+            
+            <div class="divide60"></div>
+	</main><!--END MAIN-->
+		
+        
+        <footer id="footer">
             <div class="container">
 
                 <div class="row">
@@ -166,7 +171,7 @@
                     </div>
                 </div>
             </div>
-        </footer><!--default footer end here-->
+        </footer><!--END FOOTER-->
 		
 		</div>
        <!--scripts and plugins -->
