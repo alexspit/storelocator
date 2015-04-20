@@ -1,4 +1,1 @@
-<?php
-
-echo "Hello world";
-
+<a href="blank.html">Go</a>
