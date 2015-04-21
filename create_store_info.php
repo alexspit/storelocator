@@ -56,10 +56,11 @@
                         </textarea>
                     </div>
                 </div>
-                
+                <p>Business Hours</p>
                 <div class="row">
+                   
                     <div class="col-md-3">         
-                        
+                         
                              <input type="checkbox" class="form-control" name="always" id="always" />
                              <label>Always Open</label>
                         

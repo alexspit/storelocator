@@ -77,7 +77,7 @@
                                         <input type="password" class="form-control" id="exampleInputPassword11" placeholder="Password">
                                     </div>    
                                     <div class="form-group">
-                                        <label for="exampleInputPassword111">Re-Password</label>
+                                        <label for="exampleInputPassword111">Confirm Password</label>
                                         <input type="password" class="form-control" id="exampleInputPassword111" placeholder="Password">
                                     </div> 
                                     <div class="pull-left checkbox">

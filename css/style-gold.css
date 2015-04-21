@@ -2923,7 +2923,7 @@ background-color: #f2f2f2;
     margin-bottom: 0px;
 }
 
-#storedetails, #contactdetails, #businesshoursndetails, #productdetails, #editordetails{
+#storedetails, #contactdetails, #businesshoursndetails, #productdetails, #editordetails, #reviewdetails{
     background-color: #FFF;
    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
    margin-bottom: 30px;
@@ -2937,7 +2937,7 @@ background-color: #f2f2f2;
     padding-left: 20px;
 }
 
-#dashboarddetails .details, #editordetails .details{
+#dashboarddetails .details, #editordetails .details, #reviewdetails .details, #productdetails .details{
     
     font-size: 14px;
     font-weight: lighter;
@@ -2945,25 +2945,36 @@ background-color: #f2f2f2;
 
 }
 
-#dashboarddetails hr, #products hr, #editors hr{
+#dashboarddetails hr, #products hr, #editors hr, #reviews hr{
     
     margin: 0 0 22px 0;
 }
 
 
 
-.producttitles h4, .editortitles h4{
+.producttitles h4, .editortitles h4, .reviewtitles h4 {
     padding-left: 20px;
     
     text-transform: uppercase;
     color: #b49b65;
 }
 
-.products, .editors{
+.products, .editors, .reviews{
   padding-left: 20px;
 }
 
 .products img
 {
    margin-left: 20px; 
+}
+
+#starrating{
+    font-size: 35px;
+    color: #b49b65;
+}
+
+
+#starrating_details{
+    font-size: 20px;
+    //color: #b49b65;
 }

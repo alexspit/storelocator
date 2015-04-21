@@ -1,4 +1,9 @@
-        <?php require_once("masterpage/header.php")?>
+       
+
+ <?php 
+ header("Location: register.php");
+ 
+ require_once("masterpage/header.php")?>
 
         
 	<main>
