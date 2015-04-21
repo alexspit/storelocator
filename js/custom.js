@@ -74,7 +74,7 @@ $(window).load(function() {
       checkboxClass: 'icheckbox_line',
       insert: '<div class="icheck_line-icon"></div>' + label_text
     });
-  });
+   });
 
                        
                      
