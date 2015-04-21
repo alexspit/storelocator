@@ -62,6 +62,7 @@
         <script src="js/jquery.magnific-popup.min.js" type="text/javascript"></script>
         <script src="js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>
        <script src="js/icheck.min.js"></script>
+       <script src="js/dropzone.js"></script>
        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYlhbi8Dcj0i8uF22gccZ9NsM-zwQDolM"></script>
         <script src="js/custom.js" type="text/javascript"></script>
 

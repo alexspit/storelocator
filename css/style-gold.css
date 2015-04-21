@@ -2893,3 +2893,31 @@ padding-bottom: 20px;
 }
 
  #map-canvas { height: 500px; }
+ 
+ #uploadlogoform, #uploadcoverform{
+      background-color:#eee;
+	color: #474747;
+	display: block;
+	margin-top: 15px;
+	padding: 55px 55px;
+	width: 100%;
+        text-transform: uppercase;
+        text-align: center; 
+        border: 5px dotted #026acb;
+ }
+ 
+ #storeinfo_form .form-control{
+    margin-bottom: 10px;
+}
+
+#storeinfo_form p, #always{
+    margin-top: 10px;
+}
+
+#storecontact_form .form-control, #storecontact_form .input-group{
+      margin-bottom: 10px;
+}
+
+#storecontact_form .input-group .form-control{
+    margin-bottom: 0px;
+}

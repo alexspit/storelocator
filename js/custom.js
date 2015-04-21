@@ -9,6 +9,75 @@
 //sticky header on scroll
 $(window).load(function() {
     $(".sticky").sticky({topSpacing: 0});
+    
+    
+      $("#always").on('ifChecked', function(event){
+            $("#monday_check").iCheck('check');
+            $("#teusday_check").iCheck('check');
+            $("#wednesday_check").iCheck('check');
+            $("#thursday_check").iCheck('check');
+            $("#friday_check").iCheck('check');
+            $("#saturday_check").iCheck('check');
+            $("#sunday_check").iCheck('check');
+            
+            $("#storeinfo_form input[type=time]").each(function(){
+                           //$(this).val( "00:00:00" );   
+                           $(this).prop('disabled', true);
+                       });
+                       
+               $("#storeinfo_form button").each(function(){
+                           
+                           $(this).prop('disabled', true);
+                       });
+          });
+          
+      $("#always").on('ifUnchecked', function(event){
+             $("#monday_check").iCheck('uncheck');
+            $("#teusday_check").iCheck('uncheck');
+            $("#wednesday_check").iCheck('uncheck');
+            $("#thursday_check").iCheck('uncheck');
+            $("#friday_check").iCheck('uncheck');
+            $("#saturday_check").iCheck('uncheck');
+            $("#sunday_check").iCheck('uncheck');
+            
+            $("#storeinfo_form input[type=time]").each(function(){
+                             
+                           $(this).prop('disabled', false);
+                       });
+                       
+               $("#storeinfo_form button").each(function(){
+                           
+                           $(this).prop('disabled', false);
+                       });
+          });
+    
+    
+  
+        
+                       
+        $("#storeinfo_form button").each(function(e){
+            $(this).click(function(e){
+                e.preventDefault(); 
+            });               
+               
+                       });
+                       
+                       
+        
+  $('#storeinfo_form input[type=checkbox]').each(function(){
+    var self = $(this),
+      label = self.next(),
+      label_text = label.text();
+
+    label.remove();
+    self.iCheck({
+      checkboxClass: 'icheckbox_line',
+      insert: '<div class="icheck_line-icon"></div>' + label_text
+    });
+  });
+
+                       
+                     
 });
 
 
@@ -320,21 +389,13 @@ $(document).ready(function() {
                 $("#lng").val(lng);
                 
                 
-                
-               
-  $('.icheck').each(function(){
-    var self = $(this),
-      label = self.next(),
-      label_text = label.text();
-
-    label.remove();
-    self.iCheck({
-      checkboxClass: 'icheckbox_line',
-      radioClass: 'iradio_line',
-      insert: '<div class="icheck_line-icon"></div>' + label_text
-    });
-  });
 
 	}
+        
+        
 
 	
+            
+            
+       
+        
