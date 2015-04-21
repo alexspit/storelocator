@@ -2896,7 +2896,7 @@ background-color: #f2f2f2;
  #map-canvas { height: 500px; }
  
  #uploadlogoform, #uploadcoverform{
-      background-color:#eee;
+      background-color:#FFF;
 	color: #474747;
 	display: block;
 	margin-top: 15px;
@@ -2904,7 +2904,7 @@ background-color: #f2f2f2;
 	width: 100%;
         text-transform: uppercase;
         text-align: center; 
-        border: 5px dotted #026acb;
+        border: 5px dotted #b49b65;;
  }
  
  #storeinfo_form .form-control{
@@ -2923,7 +2923,7 @@ background-color: #f2f2f2;
     margin-bottom: 0px;
 }
 
-#storedetails, #contactdetails, #businesshoursndetails, #productdetails{
+#storedetails, #contactdetails, #businesshoursndetails, #productdetails, #editordetails{
     background-color: #FFF;
    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
    margin-bottom: 30px;
@@ -2937,7 +2937,7 @@ background-color: #f2f2f2;
     padding-left: 20px;
 }
 
-#dashboarddetails .details{
+#dashboarddetails .details, #editordetails .details{
     
     font-size: 14px;
     font-weight: lighter;
@@ -2945,23 +2945,21 @@ background-color: #f2f2f2;
 
 }
 
-#dashboarddetails hr, #products hr{
+#dashboarddetails hr, #products hr, #editors hr{
     
     margin: 0 0 22px 0;
 }
 
-#dashrow:hover{
-    background-color: #E9E9E9;
-}
 
-.producttitles h4{
+
+.producttitles h4, .editortitles h4{
     padding-left: 20px;
     
     text-transform: uppercase;
     color: #b49b65;
 }
 
-.products{
+.products, .editors{
   padding-left: 20px;
 }
 
