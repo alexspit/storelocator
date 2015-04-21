@@ -64,12 +64,13 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle " data-toggle="dropdown">Manage Store<i class="fa fa-angle-down"></i></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="editors.php">Editors</a></li>
-									<li><a href="products.php">Products</a></li>
-									<li><a href="locations.php">Locations</a></li>
+                                                                    <li><a href="./dashboard.php">Dashboard</a></li>
+									<li><a href="./editors.php">Editors</a></li>
+									<li><a href="./products.php">Products</a></li>
+									<!--<li><a href="locations.php">Locations</a></li>
 									<li><a href="gallery.php">Gallery</a></li>
 									<li><a href="socialmedia.php">Social Media</a></li>
-									<li><a href="openinghours.php">Opening Hours</a></li>
+									<li><a href="openinghours.php">Opening Hours</a></li>-->
 								</ul>
 							</li>
 							<li class="dropdown ">
