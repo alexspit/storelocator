@@ -62,8 +62,8 @@ if(Input::exists())
                        ));
                    
                    if($user){
-                        
-                      Redirect::to('../dashboard.php');
+                      Session::flash('registration-success', 'Registration successful, please log in. ');
+                      Redirect::to('../register.php');
                     }        
                         
                }catch(Exception $e){
@@ -77,7 +77,7 @@ if(Input::exists())
                 foreach ($validation->errors() as $error ) {
                     $errors .= $error." </br>";
                 }
-                 Session::flash('validation-errors', $errors);
+                 Session::flash('registration-errors', $errors);
                  Redirect::to('../register.php');
             }
     

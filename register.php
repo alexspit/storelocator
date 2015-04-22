@@ -43,7 +43,7 @@
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane " id="login">
+                            <div role="tabpanel" class="tab-pane" id="login">
                                 <form>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
@@ -66,6 +66,18 @@
                             </div><!--login tab end-->
                             <div role="tabpanel" class="tab-pane active" id="profile">
                                 <form action="process/register-process.php" method="post" id="registerform">
+                                    
+                                    <div class="<?php if(Session::exists('registration-errors') || Session::exists('exception')){ echo " alert-danger ";} 
+                                                      else if(Session::exists('registration-success')) { echo " alert-success ";} 
+                                                      else{ echo " hidden "; }
+                                                 ?>alert animated tada">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <p><?php  if(Session::exists('registration-errors')){ echo Session::flash('registration-errors');}
+                                                  else if(Session::exists('exception')){echo Session::flash('exception');}
+                                                  else if(Session::exists('registration-success')) { echo Session::flash('registration-success');}
+                                            ?></p>
+                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="exampleInputname">Name</label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
