@@ -1,4 +1,10 @@
-        <?php require_once("masterpage/header.php")?>
+        <?php require_once("masterpage/header.php");
+        
+        
+        $user = new User();
+   
+        
+        ?>
 	
 <main>
             <div class="breadcrumb-wrap">
@@ -59,26 +65,26 @@
                                 </form>
                             </div><!--login tab end-->
                             <div role="tabpanel" class="tab-pane active" id="profile">
-                                <form>
+                                <form action="process/register-process.php" method="post" id="registerform">
                                     <div class="form-group">
                                         <label for="exampleInputname">Name</label>
-                                        <input type="text" class="form-control" id="exampleInputname" placeholder="Enter Name">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputname">Surname</label>
-                                        <input type="text" class="form-control" id="exampleInputname" placeholder="Enter Surname">
+                                        <input type="text" class="form-control" name="surname" id="surname" placeholder="Enter Surname">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail11">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail11" placeholder="Enter Email">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword11">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword11" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                                     </div>    
                                     <div class="form-group">
                                         <label for="exampleInputPassword111">Confirm Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword111" placeholder="Password">
+                                        <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Password">
                                     </div> 
                                     <div class="pull-left checkbox">
                                         <label>
@@ -87,6 +93,7 @@
 
                                     </div>
                                     <div class="pull-right">
+                                        <input type="hidden" name="token" value="<?php echo Token::generate();?>">
                                         <button type="submit" class="btn btn-theme-dark btn-lg">Register</button>
                                     </div>
                                     <div class="clearfix"></div>
