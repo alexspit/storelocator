@@ -1,4 +1,16 @@
-        <?php require_once("masterpage/header.php")?>
+        <?php require_once("masterpage/header.php");
+        $user = new User();
+        if(!$user->isLoggedIn()){
+            Redirect::to('register.php');
+        }
+           
+        if(Input::exists('get'))
+        { 
+            $business_id = Input::get("id");              
+        }
+        
+        
+        ?>
 
         
 	<main>
@@ -21,7 +33,7 @@
 			
             <div class="container">
 		 <h4>Online Contact Details</h4>
-                <form action="" name="storecontact_form" id="storecontact_form">
+                 <form action="process/contact_process.php" method="post" name="storecontact_form" id="storecontact_form">
                 <div class="row">
                     <div class="col-md-6">
                         
@@ -93,7 +105,10 @@
                     
                     
                 </div>
-                    <a href="#" class="btn btn-lg btn-theme-dark pull-right">Finish</a>
+                    <input type="hidden" name="token" value="<?php echo Token::generate();?>">
+                <input type="hidden" name="id" value="<?php echo $business_id;?>">
+               
+                 <input class="btn btn-theme-bg pull-right" type="submit" value="Finish">
                 </form>
                 </div>
             

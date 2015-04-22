@@ -1,7 +1,10 @@
-        <?php require_once("masterpage/header.php");
-        
-        
-        $user = new User();
+<?php require_once("masterpage/header.php");
+ $action = "login";     
+if(Input::exists('get'))
+{ 
+    $action = Input::get("action");
+}
+
    
         
         ?>
@@ -37,21 +40,21 @@
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs text-center" role="tablist">
-                            <li role="presentation" ><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Login</a></li>
-                            <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Register</a></li>
+                            <li role="presentation" class="<?php if($action == 'login'){echo "active";}?>" ><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Login</a></li>
+                            <li role="presentation" class="<?php if($action == 'register'){echo "active";}?>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Register</a></li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane" id="login">
-                                <form>
+                            <div role="tabpanel" class="tab-pane <?php if($action == 'login'){echo "active";}?>" id="login">
+                                <form action="process/login-process.php" method="post" id="loginform">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                        <label for="loginform_email">Email address</label>
+                                        <input type="email" class="form-control" name="email" id="loginform_email" placeholder="Enter email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <label for="loginform_password">Password</label>
+                                        <input type="password" class="form-control" name="password" id="loginform_password" placeholder="Password">
                                     </div>                                  
                                     <div class="pull-left">
 
@@ -59,12 +62,13 @@
 
                                     </div>
                                     <div class="pull-right">
+                                        <input type="hidden" name="token" value="<?php echo Token::generate();?>">
                                         <button type="submit" class="btn btn-theme-dark">Login</button>
                                     </div>
                                     <div class="clearfix"></div>
                                 </form>
                             </div><!--login tab end-->
-                            <div role="tabpanel" class="tab-pane active" id="profile">
+                            <div role="tabpanel" class="tab-pane <?php if($action == 'register'){echo "active";}?>" id="profile">
                                 <form action="process/register-process.php" method="post" id="registerform">
                                     
                                     <div class="<?php if(Session::exists('registration-errors') || Session::exists('exception')){ echo " alert-danger ";} 

@@ -1,4 +1,11 @@
-        <?php require_once("masterpage/header.php")?>
+        <?php require_once("masterpage/header.php");
+        
+        $user = new User();
+        if(!$user->isLoggedIn()){
+            Redirect::to('register.php');
+        }
+
+        ?>
 
         
 	<main>

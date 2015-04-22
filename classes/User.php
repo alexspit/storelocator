@@ -78,7 +78,7 @@ class User{
         return false;
     }
     
-     public function logout(){
+   public function logout(){
         
          Session::delete($this->_sessionName);
          
@@ -92,5 +92,39 @@ class User{
     public function isLoggedIn()
     {
        return $this->_isLoggedIn; 
+    }
+    
+    public function hasBusiness()
+    {
+       $sql = "SELECT COUNT(*) AS count FROM business WHERE creator_id=?";
+       $parameters = array($this->data()->user_id);
+        
+        $result = $this->_db->queryAssoc($sql, $parameters);
+      
+        if ((int)$result->result()[0]['count'] > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public function getBusiness()
+    {
+       $sql = "SELECT * FROM business WHERE creator_id=?";
+       $parameters = array($this->data()->user_id);
+        
+        $result = $this->_db->queryAssoc($sql, $parameters);
+      
+        if ((int)$result->result()[0]['count'] > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

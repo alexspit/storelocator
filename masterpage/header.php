@@ -1,7 +1,10 @@
 <?php
 ob_start();
 require_once 'core/init.php';
-
+ $user = new User();
+        if(!$user->isLoggedIn()){
+           // Redirect::to('register.php');
+        }
 
 
 ?>
@@ -66,20 +69,20 @@ require_once 'core/init.php';
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="dropdown active">
+							<li class="dropdown active <?php  if(!$user->isLoggedIn() ){ echo "hidden ";}?>">
                                                             <a href="./create_store_location.php">Create Store</a>
 							</li>
 							
-                                                        <li class="dropdown ">		
+                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?>">		
                                                            <a href="./dashboard.php">Dashboard</a>
 							</li>
-                                                        <li class="dropdown ">		
+                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?>">		
                                                            <a href="./editors.php">Editors</a>
 							</li>
-                                                        <li class="dropdown ">		
+                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?> ">		
                                                            <a href="./products.php">Products</a>
 							</li>
-							<li class="dropdown ">		
+							<li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?>">		
                                                            <a href="./reviews.php">Reviews</a>
 							</li>
                                                         <!--
@@ -109,35 +112,51 @@ require_once 'core/init.php';
 									</li><!--.drop form search-->
 								</ul><!--.drop menu-->
 							</li>
-                                                        <li class="dropdown">
-                                                            <a href="#" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
+                                                        <?php  if(!$user->isLoggedIn()){  
+                                                            
+                                                            echo '<li class="dropdown">
+                                                            <a href="#" id="login_btn" class=" dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lock"></i></a>
                                                             <div class="dropdown-menu dropdown-menu-right dropdown-login-box animated fadeInUp">
-                                                                <form action="login.php" role="form">
+                                                                <form action="process/login-process.php" method="post" id="loginform_menu" role="form">
                                                                     <h4>Signin</h4>
 
                                                                     <div class="form-group">
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                                                            <input type="text" class="form-control" placeholder="Username">
+                                                                            <input type="email" name="email" id="loginform_menu_email" class="form-control" placeholder="Email">
                                                                         </div>
                                                                         <br>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                                                            <input type="password" class="form-control" placeholder="Password">
+                                                                            <input type="password" name="password" id="loginform_menu_password" class="form-control" placeholder="Password">
                                                                         </div>
                                                                         <div class="checkbox pull-left">
                                                                             <label>
                                                                                 <input type="checkbox"> Remember me
                                                                             </label>
                                                                         </div>
-                                                                        <a class="btn btn-theme-bg pull-right">Login</a>
+                                                                        <input type="hidden" name="token" value="<?php echo Token::generate();?>">
+                                                                        <button type="submit" class="btn btn-theme-bg pull-right">Login</button>
                                                                         <div class="clearfix"></div>
                                                                         <hr>
-                                                                        <p>Don't have an account? <a href="register.php">Register Now</a></p>
+                                                                        <p>Don\'t have an account? <a href="register.php?action=register">Register Now</a></p>
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                        </li>
+                                                        </li>';
+                                                            
+                                                            
+                                                        }else{
+                                                            echo '<li class="dropdown">		
+                                                            <a href="logout.php" id="login_btn"><i class="fa fa-unlock"></i></a>
+							</li>';
+                                                        }
+?>
+                                                        
+                                                    
+                                                       
+                                                        
+                                                        
 								
 						</ul>
 					</div><!--/.nav-collapse -->

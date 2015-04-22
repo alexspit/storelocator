@@ -1,4 +1,17 @@
-        <?php require_once("masterpage/header.php")?>
+        <?php require_once("masterpage/header.php");
+        
+         $user = new User();
+        if(!$user->isLoggedIn()){
+            Redirect::to('register.php');
+        }
+           
+        if(Input::exists('get'))
+        { 
+            $business_id = Input::get("id");
+           
+            
+        }
+        ?>
 
         
 	<main>
@@ -23,8 +36,8 @@
                 <div class="row">
                     <div class="col-md-4">
                         <h4>Upload Logo</h4>
-                        <form action="logoupload.php" id="uploadlogoform" class="dropzone">
-                            
+                        <form action="process/logoupload_process.php" id="uploadlogoform" class="dropzone">
+                            <input type="hidden" name="id" value="<?php echo $business_id;?>">
                             <div class="fallback">
                               <input name="file" type="file" multiple />
                             </div>
@@ -32,8 +45,9 @@
                     </div>
                     <div class="col-md-8">
                         <h4>Upload Cover</h4>
-                        <form action="coverupload.php" id="uploadcoverform" class="dropzone">
-                            
+                        <form action="process/coverupload_process.php" id="uploadcoverform" class="dropzone">
+                            <input type="hidden" name="id" value="<?php echo $business_id;?>">
+                          
                             <div class="fallback">
                               <input name="file" type="file" multiple />
                             </div>
@@ -41,7 +55,7 @@
                     </div>
                 </div> 
                 
-                <form action="" id="storeinfo_form" >
+                <form action="process/info_process.php" method="post" id="storeinfo_form" >
                 <div class="row">
                     <div class="col-md-12">
                         <h4>Short Description</h4>
@@ -95,15 +109,15 @@
                 
                 <div class="row">
                     <div class="col-md-3">         
-                         <input type="checkbox" class="form-control" name="teusday_check" id="teusday_check" />
+                         <input type="checkbox" class="form-control" name="tuesday_check" id="tuesday_check" />
                          <label>Tuesday</label>
                     </div>
                     <div class="col-md-4">
-                        <input type="time" class="form-control" name="teusday_open_1" id="teusday_open_1" />
+                        <input type="time" class="form-control" name="tuesday_open_1" id="tuesday_open_1" />
                     </div>
                     
                     <div class="col-md-4">
-                         <input type="time" class="form-control" name="teusday_close_1" id="teusday_close_1" />
+                         <input type="time" class="form-control" name="tuesday_close_1" id="tuesday_close_1" />
                     </div>
                     <div class="col-md-1">
                         <button class="form-control" id="addtime_teu">Add</button>
@@ -202,8 +216,12 @@
                     </div>         
                     
                 </div>
-                    
-                <a class="btn btn-theme-bg pull-right" href="create_store_contact.php">Next</a>
+                
+                <input type="hidden" name="token" value="<?php echo Token::generate();?>">
+                <input type="hidden" name="id" value="<?php echo $business_id;?>">
+               
+                 <input class="btn btn-theme-bg pull-right" type="submit" value="Next">
+              
                 
               </form>
               

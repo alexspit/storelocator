@@ -1,4 +1,10 @@
-        <?php require_once("masterpage/header.php")?>
+        <?php require_once("masterpage/header.php");
+        
+        $user = new User();
+        if(!$user->isLoggedIn()){
+            Redirect::to('register.php');
+        }
+        ?>
 
         
 	<main>
@@ -24,22 +30,22 @@
                 
                 <div class="row">
                      <div class="col-md-4">
-                            <form action="locationform.php" role="form">
+                         <form action="process/location_process.php" method="post" id="locationform" role="form">
                                 <h4>Location</h4>
 
-                                <div class="form-group" id="locationform">
+                                <div class="form-group">
                                    <div class="col-md-12">
-                                       <input type="text" id="storename" name="storename" class="form-control" placeholder="Store Name">          
+                                       <input type="text" id="business_name" name="business_name" class="form-control" placeholder="Store Name">          
                                    </div>
                                     
+                                  
                                    <div class="col-md-12">
                                          <select id="category" name="category" class="form-control">
-                                            <option selected disabled>Category</option>
-                                            <option>Restaurants</option>
-                                            <option>Car Repairs</option>
-                                            <option>Insurance</option>
-                                            <option>Hotel</option>
-                                            <option>Confectionary</option>
+                                            <?php 
+                                   $category = new Category();
+                                   $category->loadDropDown();
+                                   
+                                   ?>
                                         </select>         
                                    </div>
                                     
@@ -69,16 +75,16 @@
                                    </div>
                                     
                                    <div class="col-md-6">
-                                       <input type="number" id="lat" name="lat" class="form-control" disabled placeholder="Latitude">     
+                                       <input type="text" id="lat" name="lat" class="form-control" placeholder="Latitude">     
                                        
                                    </div>
                                    <div class="col-md-6">
-                                       <input type="number" id="lng" name="lng" class="form-control" disabled placeholder="Longitude">    
+                                       <input type="text" id="lng" name="lng" class="form-control" placeholder="Longitude">    
                                       
                                    </div>
-                                 
-                                          
-                                    <a class="btn btn-theme-bg pull-right" href="create_store_info.php">Next</a>
+                                    <input type="hidden" name="creator_id" value="<?php echo $user->data()->user_id;?>">
+                                    <input type="hidden" name="token" value="<?php echo Token::generate();?>">
+                                    <button class="btn btn-theme-bg pull-right" type="submit">Next</button>
                                    
                                    <div id="current"></div>
                                    <div class="clearfix"></div>

@@ -10,11 +10,11 @@
 $(window).load(function() {
     $(".sticky").sticky({topSpacing: 0});
     
-       
+   //    $("#login_btn").click();
     
       $("#always").on('ifChecked', function(event){
             $("#monday_check").iCheck('check');
-            $("#teusday_check").iCheck('check');
+            $("#tuesday_check").iCheck('check');
             $("#wednesday_check").iCheck('check');
             $("#thursday_check").iCheck('check');
             $("#friday_check").iCheck('check');
@@ -34,7 +34,7 @@ $(window).load(function() {
           
       $("#always").on('ifUnchecked', function(event){
              $("#monday_check").iCheck('uncheck');
-            $("#teusday_check").iCheck('uncheck');
+            $("#tuesday_check").iCheck('uncheck');
             $("#wednesday_check").iCheck('uncheck');
             $("#thursday_check").iCheck('uncheck');
             $("#friday_check").iCheck('uncheck');
