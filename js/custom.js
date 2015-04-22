@@ -10,6 +10,7 @@
 $(window).load(function() {
     $(".sticky").sticky({topSpacing: 0});
     
+       
     
       $("#always").on('ifChecked', function(event){
             $("#monday_check").iCheck('check');
@@ -20,7 +21,7 @@ $(window).load(function() {
             $("#saturday_check").iCheck('check');
             $("#sunday_check").iCheck('check');
             
-            $("#storeinfo_form input[type=time]").each(function(){
+          /*  $("#storeinfo_form input[type=time]").each(function(){
                            //$(this).val( "00:00:00" );   
                            $(this).prop('disabled', true);
                        });
@@ -28,7 +29,7 @@ $(window).load(function() {
                $("#storeinfo_form button").each(function(){
                            
                            $(this).prop('disabled', true);
-                       });
+                       });*/
           });
           
       $("#always").on('ifUnchecked', function(event){
@@ -40,7 +41,7 @@ $(window).load(function() {
             $("#saturday_check").iCheck('uncheck');
             $("#sunday_check").iCheck('uncheck');
             
-            $("#storeinfo_form input[type=time]").each(function(){
+     /*       $("#storeinfo_form input[type=time]").each(function(){
                              
                            $(this).prop('disabled', false);
                        });
@@ -48,7 +49,7 @@ $(window).load(function() {
                $("#storeinfo_form button").each(function(){
                            
                            $(this).prop('disabled', false);
-                       });
+                       });*/
           });
     
     
@@ -250,24 +251,21 @@ $(document).ready(function() {
 		map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 		// Update the Google map for the user's inputted address
-		$("#country").change( function( event ) {
-                    
-			var geocoder = new google.maps.Geocoder();    // instantiate a geocoder object
-			
-			// Get the user's inputted address
-			var address = $(this).val();
-                        
-                            
-                        //var address = $(this).text();
-			// Make asynchronous call to Google geocoding API
-			geocoder.geocode( { 'address': address }, function(results, status) {
-				var addr_type = results[0].types[0];	// type of address inputted that was geocoded
-				if ( status == google.maps.GeocoderStatus.OK ) 
-					ShowLocation( results[0].geometry.location, address, addr_type );
-				else     
-					alert("Geocode was not successful for the following reason: " + status);        
-			});
-		} );
+$("#country").change( function( event ) {
+    // instantiate a geocoder object    
+    var geocoder = new google.maps.Geocoder();    	
+    // Get the user's inputted address
+    var address = $(this).val();
+    // Make asynchronous call to Google geocoding API
+    geocoder.geocode( { 'address': address }, function(results, status) {
+    var addr_type = results[0].types[0];	// type of address inputted that was geocoded
+    
+    if ( status == google.maps.GeocoderStatus.OK ) 
+	ShowLocation( results[0].geometry.location, address, addr_type );
+    else     
+	alert("Geocode was not successful for the following reason: " + status);        
+    });
+});
         
                 $("#city").blur( function( event ) {
                     event.preventDefault();
@@ -339,10 +337,10 @@ $(document).ready(function() {
 		var zoom = 12;
 		switch ( addr_type )
 		{
-		case "country"	: zoom = 11; break;		// user specified a state
-		case "locality"						: zoom = 13; break;		// user specified a city/town
-		case "street_address"				: zoom = 15; break;
-                case "route"				: zoom = 15; break;// user specified a street address
+		case "country"        : zoom = 11; break;// user specified a country
+		case "locality"       : zoom = 13; break;// user specified a city/town
+		case "street_address" : zoom = 15; break;// user specified a street address
+                case "route"          : zoom = 15; break;// user specified a route
 		}
 		map.setZoom( zoom );
 		
@@ -366,20 +364,18 @@ $(document).ready(function() {
 		google.maps.event.addListener( marker, 'click', function() { infowindow.open( map, marker ); });
                 
                 google.maps.event.addListener(marker, 'dragend', function(evt){
-               // document.getElementById('current').innerHTML = '<p>Latitude: ' + evt.latLng.lat().toFixed(3) + ' Longitude: ' + evt.latLng.lng().toFixed(3) + '</p>';
+               
                 $("#lat").val(evt.latLng.lat());
                 $("#lng").val(evt.latLng.lng());
                 
                 $("#full_lat").val(evt.latLng.lat());
                 $("#full_lng").val(evt.latLng.lng());
+                
                 });
 
                 google.maps.event.addListener(marker, 'drag', function(evt){
                 $("#lat").val(evt.latLng.lat());
                 $("#lng").val(evt.latLng.lng());
-                });
-                google.maps.event.addListener(marker, 'dragstart', function(evt){
-               // document.getElementById('current').innerHTML = '<p>Currently dragging marker...</p>';
                 });
                 
                 var lat = marker.getPosition().lat();

@@ -22,7 +22,7 @@
             <div class="container">            
                 <div class="row">
                     <div class="col-md-4">
-                        <p>Upload Logo</p>
+                        <h4>Upload Logo</h4>
                         <form action="logoupload.php" id="uploadlogoform" class="dropzone">
                             
                             <div class="fallback">
@@ -31,7 +31,7 @@
                         </form>
                     </div>
                     <div class="col-md-8">
-                        <p>Upload Cover</p>
+                        <h4>Upload Cover</h4>
                         <form action="coverupload.php" id="uploadcoverform" class="dropzone">
                             
                             <div class="fallback">
@@ -44,25 +44,22 @@
                 <form action="" id="storeinfo_form" >
                 <div class="row">
                     <div class="col-md-12">
-                        <p>Short Description</p>
-                        <textarea name="shortdesc" id="shortdesc" class="form-control">
-                            
-                        </textarea>
+                        <h4>Short Description</h4>
+                        <textarea name="shortdesc" id="shortdesc" class="form-control"></textarea>
                     </div>
                     <div class="col-md-12">
-                        <p>long Description</p>
-                        <textarea name="longdesc" rows="10" id="longdesc" class="form-control">
-                            
-                        </textarea>
+                       
+                        <h4>Long Description</h4>
+                        <textarea name="longdesc" rows="10" id="longdesc" class="form-control"></textarea>
                     </div>
                 </div>
-                <p>Business Hours</p>
+                <h4>Business Hours</h4>
                 <div class="row">
                    
                     <div class="col-md-3">         
                          
                              <input type="checkbox" class="form-control" name="always" id="always" />
-                             <label>Always Open</label>
+                             <label>Open Every Day</label>
                         
                     </div>
                     <div class="col-md-4">
