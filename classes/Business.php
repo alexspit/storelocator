@@ -18,7 +18,8 @@ class Business {
            $linkedin,
            $twitter,
            $google,
-           $address;
+           $address,
+           $business_hour;
            
        
     private $_db;
@@ -92,6 +93,150 @@ class Business {
        
         
     }
+    
+    public function getDays($num){
+        switch ($num) {
+            case 1: return "Monday";
+                break;
+            case 2: return "Tuesday";
+                break;
+            case 3: return "Wednesday";
+                break;
+            case 4: return "Thursday";
+                break;
+            case 5: return "Friday";
+                break;
+            case 6: return "Saturday";
+                break;
+            case 7: return "Sunday";
+                break;
+
+            default:
+                break;
+        }   
+    }
+    
+     public function getBusinessHours()
+    {
+        $sql = "SELECT day , open , close FROM opening_hours WHERE business_id =?";
+        $parameters = array($this->business_id);
+        $result = $this->_db->query($sql, $parameters);
+        
+        $this->business_hour = array();
+        
+        $mon="CLOSED";
+        $tue="CLOSED";
+        $wed="CLOSED";
+        $thu="CLOSED";
+        $fri="CLOSED";
+        $sat="CLOSED";
+        $sun="CLOSED";
+        
+        if($result){
+           
+        foreach ($result->result() as $key => $value) {  
+            
+               $open = date( 'H:i', strtotime($value->open) );
+               $close = date( 'H:i', strtotime($value->close) );
+               
+            switch ($value->day) {
+            case 1: $mon= $open.' - '.$close;
+                break;
+            case 2: $tue= $open.' - '.$close;
+                break;
+            case 3: $wed= $open.' - '.$close;
+                break;
+            case 4: $thu= $open.' - '.$close;
+                break;
+            case 5: $fri= $open.' - '.$close;
+                break;
+            case 6: $sat= $open.' - '.$close;
+                break;
+            case 7: $sun= $open.' - '.$close;
+                break;
+
+            default:
+                break;
+        }   
+            
+            
+                
+        }   
+          
+           //  echo $mon."<br>".$tue."<br>".$wed."<br>".$thu."<br>".$fri."<br>".$sat."<br>".$sun."<br>";
+             echo '<div class="col-md-3">
+                        <p class="title">Monday</p>                      
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <p class="details">'.$mon.'</p>                      
+                    </div>
+                     
+                     <div class="clearfix"></div><hr>
+                     
+                    <div class="col-md-3">
+                        <p class="title">Tuesday</p>                      
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <p class="details">'.$tue.'</p>                      
+                    </div>
+                     
+                      <div class="clearfix"></div><hr>
+                     
+                    <div class="col-md-3">
+                        <p class="title">Wednesday</p>                      
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <p class="details">'.$wed.'</p>                      
+                    </div>
+                      
+                      <div class="clearfix"></div><hr>
+                      
+                    <div class="col-md-3">
+                        <p class="title">Thursday</p>                      
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <p class="details">'.$thu.'</p>                      
+                    </div>
+                     
+                      <div class="clearfix"></div><hr>
+                      
+                    <div class="col-md-3">
+                        <p class="title">Friday</p>                      
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <p class="details">'.$fri.'</p>                      
+                    </div>
+                     
+                      <div class="clearfix"></div><hr>
+                    <div class="col-md-3">
+                        <p class="title">Saturday</p>                      
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <p class="details">'.$sat.'</p>                      
+                    </div>
+                     
+                      <div class="clearfix"></div><hr>
+                    
+                      <div class="col-md-3">
+                        <p class="title">Sunday</p>                      
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <p class="details">'.$sun.'</p>                      
+                    </div>
+                     ';
+        
+          
+       }
+      
+    }
+    
     public function addAddress($address)
     {   //$this->address = $address;   
         $sql = "INSERT INTO address ( business_id, city, country, street, zip_code, latitude, longitude ) VALUES (?,?,?,?,?,?,?)";
@@ -153,6 +298,11 @@ class Business {
         {
             return false;
         }
+    }
+    
+    public function loadStoreDetails()
+    {  
+        
     }
     
      

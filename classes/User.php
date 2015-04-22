@@ -113,18 +113,18 @@ class User{
     
     public function getBusiness()
     {
-       $sql = "SELECT * FROM business WHERE creator_id=?";
+       $sql = "SELECT business_id FROM business WHERE creator_id=?";
        $parameters = array($this->data()->user_id);
         
         $result = $this->_db->queryAssoc($sql, $parameters);
       
-        if ((int)$result->result()[0]['count'] > 0)
+        if ($result->result())
         {
-            return true;
+            return (int)$result->result()[0]['business_id'];
         }
         else
         {
-            return false;
+            return 0;
         }
     }
 }

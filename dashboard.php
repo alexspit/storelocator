@@ -4,7 +4,11 @@
         if(!$user->isLoggedIn()){
             Redirect::to('register.php');
         }
-
+        
+        $business_id = $user->getBusiness();
+        $business = new Business($business_id);
+        //$business->getBusinessHours();
+       
         ?>
 
         
@@ -35,13 +39,15 @@
                         <h2>Store Details</h2>                      
                     </div>
                     
-                    
+                   <!------------------STORE DETAILS---------------------------> 
+                   
+
                     <div class="col-md-3">
                         <p class="title">Store Name</p>                      
                     </div>
                     
                     <div class="col-md-9">
-                        <p class="details">Alex's Store</p>                      
+                        <p class="details"><?php echo $business->business_name;?></p>                      
                     </div>
                     
                      <div class="clearfix"></div><hr>
@@ -51,7 +57,7 @@
                     </div>
                     
                     <div class="col-md-9">
-                        <p class="details">Confectionary</p>                      
+                        <p class="details"><?php echo $business->category->category_name;?></p>                      
                     </div>
                      
                      <div class="clearfix"></div><hr>
@@ -61,19 +67,9 @@
                     </div>
                     
                     <div class="col-md-9">
-                        <p class="details">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.</p>                      
+                        <p class="details"><?php echo $business->short_desc;?></p>                      
                     </div>
-                     
-                    <div class="clearfix"></div><hr>
-                    
-                    <div class="col-md-3">
-                        <p class="title">Logo</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <img src="uploads/logo.png">                    
-                    </div>
-                    
+                    <!------------------STORE DETAILS--------------------------->   
                 </div>
                 
                 
@@ -88,12 +84,12 @@
                     </div>
                     
                     <div class="col-md-9">
-                        <p class="details"><a href="mailto:aspiterer@hotmail.com">aspiterer@hotmail.com</a></p>                      
+                        <p class="details"><a href="mailto:<?php echo $business->email;?>"><?php echo $business->email;?></a></p>                      
                     </div>
                     
                      <div class="clearfix"></div><hr>
                      
-                    <div class="col-md-3">
+                   <!-- <div class="col-md-3">
                         <p class="title">Website</p>                      
                     </div>
                     
@@ -101,14 +97,14 @@
                         <p class="details"><a href="https://www.alexstore.com">https://www.alexstore.com</a></p>                      
                     </div>
                      
-                     <div class="clearfix"></div><hr>
+                     <div class="clearfix"></div><hr>-->
                      
                     <div class="col-md-3">
                         <p class="title">Mobile</p>                      
                     </div>
                     
                     <div class="col-md-9">
-                        <p class="details"><a href="tel:0035679281426">+356 7928 1426</a></p>                      
+                        <p class="details"><a href="tel:<?php echo $business->mobile;?>"><?php echo $business->mobile;?></a></p>                      
                     </div>
                      
                       <div class="clearfix"></div><hr>
@@ -118,7 +114,7 @@
                     </div>
                     
                     <div class="col-md-9">
-                        <p class="details"><a href="tel:0035621249200">+356 21 249 200</a></p>                      
+                        <p class="details"><a href="tel:<?php echo $business->landline;?>"><?php echo $business->landline;?></a></p>                      
                     </div>
                       
                       
@@ -129,10 +125,10 @@
                     
                     <div class="col-md-9">
                         <address>
-                            <p class="details">Alex's Store,<br>
-                            Triq il-Kampanella, <br>
-                            Fgura, Malta,<br>
-                            FGR1692</p> 
+                            <p class="details"><?php echo $business->business_name;?>,<br>
+                            <?php echo $business->address->street;?>, <br>
+                            <?php echo $business->address->city;?>, <?php echo $business->address->country;?>,<br>
+                            <?php echo $business->address->zip_code;?></p> 
                         </address>                     
                     </div>
                 </div>
@@ -145,9 +141,9 @@
                         <br>
                         <h2>Business Hours</h2>                      
                     </div>
-                    
+                    <?php echo $business->getBusinessHours();?>
                   
-                    
+                    <!--
                      <div class="clearfix"></div><hr>
                      
                     <div class="col-md-3">
@@ -217,7 +213,7 @@
                         <p class="details">CLOSED</p>                      
                     </div>
                      
-                      <div class="clearfix"></div><hr>
+                      <div class="clearfix"></div><hr>-->
                 </div>
               
             </div>
