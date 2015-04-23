@@ -6,6 +6,11 @@
         }
         
         $business_id = $user->getBusiness();
+        if(Input::exists('get'))
+        { 
+            $business_id = Input::get("id");              
+        }
+        
         $business = new Business($business_id);
         //$business->getBusinessHours();
        

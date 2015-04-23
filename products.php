@@ -1,4 +1,26 @@
-        <?php require_once("masterpage/header.php")?>
+        <?php require_once("masterpage/header.php");
+        $user = new User();
+        if(!$user->isLoggedIn()){
+            Redirect::to('register.php');
+        }
+        
+        $business_id = $user->getBusiness();
+        
+        
+        if(Input::exists('get'))
+        { 
+            $business_id = Input::get("id");              
+        }
+        
+        $business = new Business($business_id);
+        //$business->getBusinessHours();
+        
+       $product = new Product();
+        $product->business_id = $business_id;
+       
+        
+        
+        ?>
 
         
 	<main>
@@ -54,107 +76,10 @@
                         </div>
                     </div>
                     
-                    <div class="row products" id="product_1">
-                        <div class="col-md-2">
-                            <img class="hidden-xs hidden-sm" src="img/img-5.jpg" width="50">
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Product1</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">$25.00</p>  
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Lorem Ipomoea dolorest est.</p>  
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                    <div class="row products" id="product_2">
-                        <div class="col-md-2">
-                            <img class="hidden-xs hidden-sm" src="img/img-5.jpg" width="50">
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Product1</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">$25.00</p>  
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Lorem Ipomoea dolorest est.</p>  
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                    <div class="row products" id="product_3">
-                        <div class="col-md-2">
-                            <img class="hidden-xs hidden-sm" src="img/img-5.jpg" width="50">
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Product1</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">$25.00</p>  
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Lorem Ipomoea dolorest est.</p>  
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                    <div class="row products" id="product_3">
-                        <div class="col-md-2">
-                            <img class="hidden-xs hidden-sm" src="img/img-5.jpg" width="50">
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Product1</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">$25.00</p>  
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Lorem Ipomoea dolorest est.</p>  
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                    <div class="row products" id="product_3">
-                        <div class="col-md-2">
-                            <img class="hidden-xs hidden-sm" src="img/img-5.jpg" width="50">
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Product1</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">$25.00</p>  
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Lorem Ipomoea dolorest est.</p>  
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                    <div class="row products" id="product_3">
-                        <div class="col-md-2">
-                            <img class="hidden-xs hidden-sm" src="img/img-5.jpg" width="50">
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Product1</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">$25.00</p>  
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Lorem Ipomoea dolorest est.</p>  
-                        </div>
-                        
-                        
-                    </div>
+                   <?php
+                    $product->populate();
+                   ?>
+                  
                     
                      
                           
@@ -179,27 +104,30 @@
       <div class="modal-header" style='background-color: #b49b65;'>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Add a Product</h4>
-      </div>
-      <div class="modal-body">
-        <form id='addproductform'>
-          <div class="form-group">
-            <label for="product_name" class="control-label">Product Name:</label>
-            <input type="text" class="form-control" id="product_name">
-          </div>
-          <div class="form-group">
-            <label for="product_price" class="control-label">Price:</label>
-            <input type="number" step="any" class="form-control" id="product_price">
-          </div>
-          <div class="form-group">
-            <label for="product_desc" class="control-label">Description:</label>
-            <textarea class="form-control" id="product_desc"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-theme-dark">Add</button>
-      </div>
+      </div>  
+        <form id='addproductform' action="process/addproduct_process.php" method="post">
+                <div class="modal-body">
+
+                    <div class="form-group">
+                      <label for="product_name" class="control-label">Product Name:</label>
+                      <input type="text" class="form-control" name="product_name" id="product_name">
+                    </div>
+                    <div class="form-group">
+                      <label for="product_price" class="control-label">Price:</label>
+                      <input type="number" step="any" class="form-control" name="product_price" id="product_price">
+                    </div>
+                    <div class="form-group">
+                      <label for="product_desc" class="control-label">Description:</label>
+                      <textarea class="form-control" name="description" id="product_desc"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <input type="hidden" name="token" value="<?php echo Token::generate();?>">
+                     <input type="hidden" name="id" value="<?php echo $business_id;?>">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button class="btn btn-theme-bg pull-right" type="submit">Add</button>
+                </div>
+       </form>
     </div>
   </div>
 </div>

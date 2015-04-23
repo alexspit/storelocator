@@ -4,8 +4,16 @@
         if(!$user->isLoggedIn()){
             Redirect::to('register.php');
         }
+          if(Input::exists('get'))
+        { 
+            $review_id = Input::get("id");              
+        }
         
-        $business_id = $user->getBusiness();
+        echo $review_id;
+        
+        $review = new Review();
+        $review->review_id = $review_id;
+   /*     $business_id = $user->getBusiness();
         
         
         if(Input::exists('get'))
@@ -24,7 +32,7 @@
        
        // $review->getStars($avgrating);
         
-        
+        */
         ?>
 
         
@@ -33,7 +41,7 @@
 		<div class="container">
                     <div class="row">
 			<div class="col-sm-6">
-                            <h4>Reviews and Ratings</h4>
+                            <h4>Respond</h4>
                         </div>
 			<div class="col-sm-6 hidden-xs text-right">
                             <ol class="breadcrumb">
@@ -57,87 +65,12 @@
                         <h2 style="padding-left:20px;">Manage Reviews</h2>
                     </div>
                     
-                    <div class="col-md-3 hidden-sm hidden-xs">
-                        <br>
-                         <div class="animated shake" id="starrating" data-toggle="tooltip" data-placement="top" title="" data-original-title="Average Rating:  <?php echo $avgrating; ?>">
-                           <?php echo $review->getStars($avgrating); ?>
-                         </div>
-                    </div>
+                    
                    
                 </div>
-                    
-                    
-                    
-                  
-                    <div class="row reviewtitles hidden-xs hidden-sm" id="reviewtitle">
-                        <div class="col-md-2">
-                            <h4>Name</h4>
-                        </div>
-                        <div class="col-md-2">
-                            <h4>Rating</h4>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Review</h4>
-                        </div>
-                        <div class="col-md-2">
-                            <h4>Status</h4>
-                        </div>
-                        <div class="col-md-2">
-                            
-                        </div>
-                        
-                    </div>
-                    
-                    <?php 
-                     $review->populate();
-                    
-                    ?>
-                    <!--
-                    <div class="row reviews" id="review_1">
-                        <div class="col-md-2">
-                            <p class="details">John</p>  
-                        </div>
-                        <div class="col-md-2">
-                            <div id="starrating_details" data-toggle="tooltip" data-placement="top" title="" data-original-title="Rating: 4">
-                                <i class="fa fa-star" ></i> <i class="fa fa-star" ></i> <i class="fa fa-star" ></i> <i class="fa fa-star" ></i> <i class="fa fa-star-o" ></i>
-                            </div>   
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Dsf s sdfgfs dgs g sdfg sfd gsd gsd g sdgsdfsdfsd...</p> 
-                        </div>
-                        <div class="col-md-2">
-                             <p class="details">New</p> 
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-theme-dark"  data-toggle="modal" data-target="#respondmodal">Details</button>
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                   <div class="row reviews" id="review_2">
-                        <div class="col-md-2">
-                            <p class="details">John</p>  
-                        </div>
-                        <div class="col-md-2">
-                            <div id="starrating_details" data-toggle="tooltip" data-placement="top" title="" data-original-title="Rating: 5">
-                                <i class="fa fa-star" ></i> <i class="fa fa-star" ></i> <i class="fa fa-star" ></i> <i class="fa fa-star" ></i> <i class="fa fa-star" ></i>
-                            </div>   
-                        </div>
-                        <div class="col-md-4">
-                            <p class="details">Dsf s sdfgfs dgs g sdfg sfd gsd gsd g sdgsdfsdfsd...</p> 
-                        </div>
-                        <div class="col-md-2">
-                             <p class="details">Responded</p> 
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-theme-dark"  data-toggle="modal" data-target="#reviewmodal">Details</button>
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                   -->
+     
+          <?php $review->populateReviewResponse();?>
+                   
                     
                      
                           

@@ -6,9 +6,19 @@
         }
         
         $business_id = $user->getBusiness();
+        
+      
+        if(Input::exists('get'))
+        { 
+            $business_id = Input::get("id");              
+        }
         $business = new Business($business_id);
         //$business->getBusinessHours();
-       
+        
+         $editor = new Editor();
+         $editor->business_id = $business_id;
+         
+        
         ?>
 
         
@@ -61,58 +71,15 @@
                             <h4>Access Level</h4>
                         </div>
                         <div class="col-md-3">
-                            <h4>Premissions</h4>
+                            <h4>Date Created</h4>
                         </div>
                         
                     </div>
+                    <?php
+                        $editor->populate(); 
                     
-                    <div class="row editors" id="editor_1">
-                        <div class="col-md-3">
-                            <p class="details">John</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">john@gmail.com</p>    
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">2</p> 
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Can Add Products<br>
-                                Can respond to reviews
-                            </p>  
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                      <div class="row editors" id="editor_1">
-                        <div class="col-md-3">
-                            <p class="details">Mary</p>  
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">mary@gmail.com</p>    
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">5</p> 
-                        </div>
-                        <div class="col-md-3">
-                            <p class="details">Can Add Products<br>
-                                Can respond to reviews<br>
-                                Can Add Editors
-                            </p>  
-                        </div>
-                        
-                         <div class="clearfix"></div><hr>
-                    </div>
-                    
-                    
-                   
-                    
-                     
-                          
-                   
-                  
-                    
+                    ?>
+                         
                 </div>
                 
            

@@ -38,12 +38,15 @@ if(Input::exists())
                if($editor->user_id > 0){//If exists
                    if($editor->isAlreadyEditor())
                    {
-                       echo "AlreadyEditor"; exit;
+                       echo "Already Editor"; exit;
                    }
                    else{
                        if($editor->add()>0){
                            Session::flash('editor_success', "Editor added successfully");  
                        } 
+                        else {
+                                echo "Add failed"; exit;
+                        }
                    }
               
                }

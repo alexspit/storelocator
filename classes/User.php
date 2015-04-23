@@ -111,13 +111,33 @@ class User{
         }
     }
     
-    public function getBusiness()
+     public function isEditor()
     {
-       $sql = "SELECT business_id FROM business WHERE creator_id=?";
+         
+       $sql = "SELECT COUNT(*) AS count FROM editor WHERE user_id=?";
        $parameters = array($this->data()->user_id);
         
         $result = $this->_db->queryAssoc($sql, $parameters);
       
+        if ((int)$result->result()[0]['count']>0)
+        {
+            return true;
+        }
+        else
+        {
+          
+            return false;
+        }
+    }
+    
+    public function getBusiness()
+    {
+       $sql = "SELECT business_id FROM business WHERE creator_id=?";
+     
+       $parameters = array($this->data()->user_id);
+        
+        $result = $this->_db->queryAssoc($sql, $parameters);
+     
         if ($result->result())
         {
             return (int)$result->result()[0]['business_id'];

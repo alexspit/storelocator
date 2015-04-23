@@ -25,13 +25,21 @@ if(Input::exists())//Check if form has been submitted
                 $login = $user->login(Input::get('email'), Input::get('password'));
                 
                 if($login){   
-                    if($user->hasBusiness()){
-                        Session::flash('login-success', 'Log in successful.');
-                        Redirect::to('../dashboard.php');
+                    
+                    if($user->isEditor()){
+                         Redirect::to('../editor_businesses.php');
+                       
+                            
                     }
                     else{
-                         Session::flash('login-success', 'Log in successful. Please create a new Store to begin.');
-                        Redirect::to('../create_store_location.php');
+                        if($user->hasBusiness()){
+                                Session::flash('login-success', 'Log in successful.');
+                                Redirect::to('../dashboard.php');
+                            }
+                            else{
+                                 Session::flash('login-success', 'Log in successful. Please create a new Store to begin.');
+                                Redirect::to('../create_store_location.php');
+                            }
                     }
                     
                 }
