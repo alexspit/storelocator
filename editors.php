@@ -1,4 +1,15 @@
-        <?php require_once("masterpage/header.php")?>
+        <?php require_once("masterpage/header.php");
+        
+        $user = new User();
+        if(!$user->isLoggedIn()){
+            Redirect::to('register.php');
+        }
+        
+        $business_id = $user->getBusiness();
+        $business = new Business($business_id);
+        //$business->getBusinessHours();
+       
+        ?>
 
         
 	<main>
@@ -121,28 +132,32 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel" style='color: #FFF;'>Add an Editor</h4>
       </div>
+      <form action="process/addeditor_process.php" method="post" id='addeditorform'>
       <div class="modal-body">
-        <form id='addeditorform'>
-          <div class="form-group">
-            <label for="editor_email" class="control-label">Email:</label>
-            <input type="email" class="form-control" id="editor_email">
-          </div>
-          <div class="form-group">
-            <label for="editor_accesslevel" class="control-label">Access Level:</label>
-            <input type="number" max="4" min="1" class="form-control" id="editor_accesslevel" data-toggle="tooltip" data-placement="top" title="" data-original-title="1: Manage Products, 2: Manage Reviews, 3: Manage Editors, 4: All Permissions">
-            
-            
-          </div>
-          <div class="form-group">
-            <label for="editor_comment" class="control-label">Comment:</label>
-            <textarea class="form-control" id="editor_comment"></textarea>
-          </div>
-        </form>
+         
+                <div class="form-group">
+                  <label for="editor_email" class="control-label">Email:</label>
+                  <input type="email" class="form-control" name="editor_email" id="editor_email">
+                </div>
+                <div class="form-group">
+                  <label for="editor_accesslevel" class="control-label">Access Level:</label>
+                  <input type="number" max="4" min="1" class="form-control" name="access_level" id="editor_accesslevel" data-toggle="tooltip" data-placement="top" title="" data-original-title="1: Manage Products, 2: Manage Reviews, 3: Manage Editors, 4: All Permissions">
+
+
+                </div>
+                <div class="form-group">
+                  <label for="editor_comment" class="control-label">Comment:</label>
+                  <textarea class="form-control" name="editor_comment" id="editor_comment"></textarea>
+                </div>
+       
       </div>
       <div class="modal-footer">
+           <input type="hidden" name="token" value="<?php echo Token::generate();?>">
+           <input type="hidden" name="id" value="<?php echo $business_id;?>">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-theme-dark">Add</button>
+          <button class="btn btn-theme-bg pull-right" type="submit">Add</button>
       </div>
+       </form>
     </div>
   </div>
 </div>
