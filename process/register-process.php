@@ -2,14 +2,8 @@
 
 require_once '../core/init.php';
 
-//var_dump(Token::check(Input::get('token')));
-
-    
 if(Input::exists())
 {
-    //echo "exists";
-    
-    
     if(Token::check(Input::get('token'))){//protection against CSRF
             $validate = new Validate();
             $validation = $validate->check($_POST, array(
@@ -68,7 +62,7 @@ if(Input::exists())
                         
                }catch(Exception $e){
                  Session::flash('exception', $e->getMessage());
-                 Redirect::to('../register.php');
+                 Redirect::to('../register.php?action=register');
                }
             }
             else
@@ -78,16 +72,16 @@ if(Input::exists())
                     $errors .= $error." </br>";
                 }
                  Session::flash('registration-errors', $errors);
-                 Redirect::to('../register.php');
+                 Redirect::to('../register.php?action=register');
             }
     
 }else
 { 
-    Redirect::to('../register.php');
+    Redirect::to('../register.php?action=register');
 }
     
 }
 else
 {
-    Redirect::to('../register.php');
+    Redirect::to('../register.php?action=register');
 }

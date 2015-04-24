@@ -38,27 +38,36 @@ if(Input::exists())
                if($editor->user_id > 0){//If exists
                    if($editor->isAlreadyEditor())
                    {
-                       echo "Already Editor"; exit;
+                        
+                         Session::flash('error', "The user is already an editor."); 
+                         
+                         Redirect::to('../editors.php');
                    }
                    else{
                        if($editor->add()>0){
-                           Session::flash('editor_success', "Editor added successfully");  
+                           Session::flash('success', "Editor added successfully"); 
+                           Redirect::to('../editors.php');
                        } 
                         else {
-                                echo "Add failed"; exit;
+                                Session::flash('error', "Error adding editor."); 
+                                Redirect::to('../editors.php');
                         }
                    }
               
                }
                else
                {
-                   echo "No user found"; exit;
+                  // $_SESSION['error'] = "The email you entered is not present in the database.";
+                   Session::flash('error', "The email you entered is not present in the database."); 
+                   
+                   Redirect::to('../editors.php');
+                   
                }
                       
                
                
               
-               if($business->addContacts())
+            /*   if($business->addContacts())
                {
                   
                   Redirect::to('../dashboard.php');
@@ -67,29 +76,29 @@ if(Input::exists())
                        echo "Fail";exit;
                        Redirect::to('../create_store_contact.php');
                }
-               
+               */
                
             }
             else
             {
-                echo "Errors";exit;
+               
                 $errors='';
                 foreach ($validation->errors() as $error ) {
                     $errors .= $error." </br>";
                 }
                  Session::flash('validation-errors', $errors);
-                 Redirect::to('../create_store_contact.php');
+                 Redirect::to('../editors.php');
             }
     
 }else
 { 
-    echo "Token";exit;
-     Redirect::to('../create_store_contact.php');
+    
+     Redirect::to('../editors.php');
 }
     
 }
 else
 {
-   echo "Input";exit;
-   Redirect::to('../create_store_info.php');
+  
+   Redirect::to('../editors.php');
 }

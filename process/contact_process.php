@@ -41,19 +41,19 @@ if(Input::exists())
               
                if($business->addContacts())
                {
-                  
+                  Session::flash('contact-success', "Congratulations, your store page has been created! Feel free to manage your page from here.");
                   Redirect::to('../dashboard.php');
                }
                else {
-                       echo "Fail";exit;
-                       Redirect::to('../create_store_contact.php');
+                   Session::flash('contact-error', "Error while adding contacts");
+                    Redirect::to('../create_store_contact.php');
                }
                
                
             }
             else
             {
-                echo "Errors";exit;
+               
                 $errors='';
                 foreach ($validation->errors() as $error ) {
                     $errors .= $error." </br>";

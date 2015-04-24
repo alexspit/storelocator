@@ -116,7 +116,7 @@ class Business {
         }   
     }
     
-     public function getBusinessHours()
+    public function getBusinessHours()
     {
         $sql = "SELECT day , open , close FROM opening_hours WHERE business_id =?";
         $parameters = array($this->business_id);
@@ -245,8 +245,8 @@ class Business {
         return $result->last_inserted_id;      
     }
     
-     public function addBusinessHours($business_hours)
-    {   //$this->address = $address;   
+    public function addBusinessHours($business_hours)
+    {      
         $sql = "INSERT INTO opening_hours ( business_id, day, open, close ) VALUES (?,?,?,?)";  
         $parameters = array($this->business_id, $business_hours->day, $business_hours->open, $business_hours->close);
         $result = $this->_db->query($sql, $parameters);
@@ -268,7 +268,7 @@ class Business {
         }
     }
     
-     public function addContacts()
+    public function addContacts()
     {
         $sql = "UPDATE business SET date_created=NOW(), email='$this->email',mobile='$this->mobile',landline='$this->landline',facebook_path='$this->facebook',twitter_path='$this->twitter',linkedin_path='$this->linkedin',googleplus_path='$this->google' WHERE business_id=?";
        
@@ -282,10 +282,9 @@ class Business {
         {
             return false;
         }
-    }
+    }   
     
-    
-      public function addLogoPath()
+    public function addLogoPath()
     {
         $sql = "UPDATE business SET logo_path='$this->logo_path' WHERE business_id=?";
         $parameters = array($this->business_id);
@@ -298,11 +297,6 @@ class Business {
         {
             return false;
         }
-    }
-    
-    public function loadStoreDetails()
-    {  
-        
     }
     
      

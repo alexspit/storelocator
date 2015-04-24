@@ -4,10 +4,13 @@
             Redirect::to('register.php');
         }
            
+         $business_id = $user->getBusiness();
         if(Input::exists('get'))
         { 
             $business_id = Input::get("id");              
         }
+        
+        $business = new Business($business_id);
         
         
         ?>
@@ -32,6 +35,18 @@
             <div class="divide20"></div>
 			
             <div class="container">
+                
+                <div class="<?php if(Session::exists('validation-errors') || Session::exists('contact-error')){ echo " alert-danger ";} 
+                                                      else if(Session::exists('info-success')) { echo " alert-success ";} 
+                                                      else{ echo " hidden "; }
+                                                 ?>alert animated tada">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <p><?php  if(Session::exists('validation-errors')){ echo Session::flash('validation-errors');}
+                                                  else if(Session::exists('contact-error')){echo Session::flash('contact-error');}
+                                                  else if(Session::exists('info-success')) { echo Session::flash('info-success');}
+                                            ?></p>
+                </div>
+                
 		 <h4>Online Contact Details</h4>
                  <form action="process/contact_process.php" method="post" name="storecontact_form" id="storecontact_form">
                 <div class="row">

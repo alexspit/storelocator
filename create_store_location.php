@@ -20,23 +20,39 @@
                                 <li>Create</li>
                             </ol>
                         </div>
+                        
+                         
                     </div>
 		</div>
             </div><!--breadcrumbs-->
             <div class="divide20"></div>
 			
+            
+            
             <div class="container">
-		
-                
+		               
                 <div class="row">
                      <div class="col-md-4">
+                         <div class="<?php if(Session::exists('validation-errors') || Session::exists('location-error')){ echo " alert-danger ";} 
+                                                      else if(Session::exists('login-success')) { echo " alert-success ";} 
+                                                      else{ echo " hidden "; }
+                                                 ?>alert animated tada">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <p><?php  if(Session::exists('validation-errors')){ echo Session::flash('validation-errors');}
+                                                  else if(Session::exists('location-error')){echo Session::flash('location-error');}
+                                                  else if(Session::exists('login-success')) { echo Session::flash('login-success');}
+                                            ?></p>
+                                </div>
                          <form action="process/location_process.php" method="post" id="locationform" role="form">
                                 <h4>Location</h4>
+                                
+                                
 
                                 <div class="form-group">
                                    <div class="col-md-12">
                                        <input type="text" id="business_name" name="business_name" class="form-control" placeholder="Store Name">          
                                    </div>
+                                   
                                     
                                   
                                    <div class="col-md-12">

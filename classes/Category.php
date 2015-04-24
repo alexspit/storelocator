@@ -17,25 +17,16 @@ class Category{
     
     public function loadDropDown()
     {
-         $sql = "SELECT category_id, category_name FROM category";
+        $sql = "SELECT category_id, category_name FROM category";
         
         $result = $this->_db->query($sql);
         
        if($result){
-           //print_r($result->result());exit;
-          echo "<option selected disabled>Category</option>";
-        foreach ($result->result() as $key => $value) {   
-          // echo $value->category_id.' '.$value->category_name;
-            
-             echo "<option value='$value->category_id'>$value->category_name</option>";
-                
+            echo "<option selected disabled>Category</option>";
+            foreach ($result->result() as $key => $value) {   
+                 echo "<option value='$value->category_id'>$value->category_name</option>";        
+            }     
         }
-        
-        }
-        
-      
-    
-
     }
 
 }

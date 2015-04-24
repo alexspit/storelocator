@@ -37,7 +37,7 @@ if(Input::exists())//Check if form has been submitted
                                 Redirect::to('../dashboard.php');
                             }
                             else{
-                                 Session::flash('login-success', 'Log in successful. Please create a new Store to begin.');
+                                Session::flash('login-success', 'Log in successful. Please create a new Store to begin.');
                                 Redirect::to('../create_store_location.php');
                             }
                     }
@@ -55,7 +55,7 @@ if(Input::exists())//Check if form has been submitted
                 }
                  Session::flash('validation-errors', $errors);
                
-                 Redirect::to('../login.php');
+                 Redirect::to('../register.php');
                  
             }
         

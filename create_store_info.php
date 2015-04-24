@@ -32,8 +32,24 @@
             </div><!--breadcrumbs-->
             <div class="divide20"></div>
 			
-            <div class="container">            
+            <div class="container"> 
+                
+                <div class="<?php if(Session::exists('validation-errors') || Session::exists('info-error')){ echo " alert-danger ";} 
+                                                      else if(Session::exists('location-success')) { echo " alert-success ";} 
+                                                      else{ echo " hidden "; }
+                                                 ?>alert animated tada">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <p><?php  if(Session::exists('validation-errors')){ echo Session::flash('validation-errors');}
+                                                  else if(Session::exists('info-error')){echo Session::flash('info-error');}
+                                                  else if(Session::exists('location-success')) { echo Session::flash('location-success');}
+                                            ?></p>
+                </div>
+                
+                
                 <div class="row">
+                    
+                    
+                    
                     <div class="col-md-4">
                         <h4>Upload Logo</h4>
                         <form action="process/logoupload_process.php" id="uploadlogoform" class="dropzone">
@@ -76,11 +92,11 @@
                              <label>Open Every Day</label>
                         
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 hidden-xs hidden-sm">
                         <p> OPEN</p>
                     </div>
                     
-                    <div class="col-md-4">
+                    <div class="col-md-4 hidden-xs hidden-sm">
                          <p> CLOSE</p>
                     </div>
                     <div class="col-md-1">

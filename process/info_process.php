@@ -46,6 +46,8 @@ if(Input::exists())
                $business->long_desc = Input::get("longdesc");
                
               $result=0;
+              
+             
                foreach ($opening_hours as $value) {
                    
                  $result += $business->addBusinessHours($value);
@@ -56,18 +58,25 @@ if(Input::exists())
                {
                    if($business->addDescriptions())
                    {
-                       Redirect::to('../create_store_contact.php?id='.$business->business_id);
+                        Session::flash('info-success', "Data input successfully. Please enter your store's contact details to finish.");
+                        Redirect::to('../create_store_contact.php?id='.$business->business_id);
                    }
                     else {
-                       echo "Fail";exit;
-                       Redirect::to('../create_store_info.php');
+                        Session::flash('info-error', "Error adding descriptions.");
+                        Redirect::to('../create_store_info.php');
                     }
                }
+               else{
+                   Session::flash('info-error', "Please enter your business hours.");
+                   Redirect::to('../create_store_info.php');
+               }
+               
+              
                
             }
             else
             {
-                echo "Errors";exit;
+                
                 $errors='';
                 foreach ($validation->errors() as $error ) {
                     $errors .= $error." </br>";

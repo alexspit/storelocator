@@ -6,9 +6,13 @@ require_once 'core/init.php';
            // Redirect::to('register.php');
         }
         
+    /*   $access = 4;
         
-        
-
+       if(Session::exists('access')){
+           $access = Session::get('access'); 
+        }
+*/
+      // echo $access;
 
 ?>
 
@@ -72,20 +76,20 @@ require_once 'core/init.php';
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-                                                    <li class="dropdown active <?php  if(!$user->isLoggedIn() || $user->hasBusiness()){ echo "hidden ";}?>">
+                                                    <li class="dropdown <?php  if(!$user->isLoggedIn() || $user->hasBusiness()){ echo "hidden ";}?>">
                                                             <a href="./create_store_location.php">Create Store</a>
 							</li>
 							
-                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?>">		
+                                                        <li class="dropdown <?php  if(!$user->isLoggedIn() || !$user->hasBusiness() ){ echo "hidden ";}?>">		
                                                            <a href="./dashboard.php">Dashboard</a>
 							</li>
-                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?>">		
+                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()|| !$user->hasBusiness()){ echo "hidden ";}?>">		
                                                            <a href="./editors.php">Editors</a>
 							</li>
-                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?> ">		
+                                                        <li class="dropdown <?php  if(!$user->isLoggedIn()|| !$user->hasBusiness()){ echo "hidden ";}?> ">		
                                                            <a href="./products.php">Products</a>
 							</li>
-							<li class="dropdown <?php  if(!$user->isLoggedIn()){ echo "hidden ";}?>">		
+							<li class="dropdown <?php  if(!$user->isLoggedIn()|| !$user->hasBusiness()){ echo "hidden ";}?>">		
                                                            <a href="./reviews.php">Reviews</a>
 							</li>
                                                         <!--

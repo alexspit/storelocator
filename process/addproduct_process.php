@@ -11,6 +11,10 @@ if(Input::exists())
                 'product_name' => array(
                     'required' => true,
                     'min' => 2                   
+                ),
+                'product_price' => array(
+                    'required' => true,
+                    'isnumeric' => true                   
                 )
             ));
              
@@ -36,11 +40,11 @@ if(Input::exists())
 
                 if($product->add()>0){
                     
-                           Session::flash('product_success', "Product added successfully");
+                           Session::flash('product-success', "Product added successfully");
                            Redirect::to('../products.php');
                        } 
                         else {
-                                echo "Add failed"; exit;
+                                Session::flash('error', "Failed to add product.");
                                   Redirect::to('../products.php');
                         }
                
@@ -49,7 +53,7 @@ if(Input::exists())
             
             else
             {
-                echo "Errors";exit;
+               
                 $errors='';
                 foreach ($validation->errors() as $error ) {
                     $errors .= $error." </br>";
@@ -60,13 +64,13 @@ if(Input::exists())
     
 }else
 { 
-    echo "Token";exit;
+    
        Redirect::to('../products.php');
 }
     
 }
 else
 {
-   echo "Input";exit;
+   
      Redirect::to('../products.php');
 }

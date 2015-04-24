@@ -45,6 +45,19 @@
 
 			
             <div class="container" id="products">
+                
+                <div class="col-md-12 <?php if(Session::exists('validation-errors') || Session::exists('error')){ echo " alert-danger ";} 
+                                                      else if(Session::exists('product-success')) { echo " alert-success ";} 
+                                                      else{ echo " hidden "; }
+                                                 ?>alert animated tada">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <p><?php  if(Session::exists('validation-errors')){ echo Session::flash('validation-errors');}
+                                                  else if(Session::exists('error')){echo Session::flash('error');}
+                                                  else if(Session::exists('product-success')) { echo Session::flash('product-success');}
+                                            ?></p>
+                  </div>
+                
+                
                 <div id="productdetails">
                 <div class="row" >
                     <div class="col-md-9">

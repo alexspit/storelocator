@@ -48,6 +48,20 @@ if(Input::exists('get'))
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane <?php if($action == 'login'){echo "active";}?>" id="login">
                                 <form action="process/login-process.php" method="post" id="loginform">
+                                    
+                                    
+                                    <div class="<?php if(Session::exists('validation-errors') || Session::exists('login-error')){ echo " alert-danger ";} 
+                                                      else if(Session::exists('registration-success')) { echo " alert-success ";} 
+                                                      else{ echo " hidden "; }
+                                                 ?>alert animated tada">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <p><?php  if(Session::exists('validation-errors')){ echo Session::flash('validation-errors');}
+                                                  else if(Session::exists('login-error')){echo Session::flash('login-error');}
+                                                  else if(Session::exists('registration-success')) { echo Session::flash('registration-success');}
+                                            ?></p>
+                                    </div>
+                                    
+                                    
                                     <div class="form-group">
                                         <label for="loginform_email">Email address</label>
                                         <input type="email" class="form-control" name="email" id="loginform_email" placeholder="Enter email">
@@ -68,6 +82,10 @@ if(Input::exists('get'))
                                     <div class="clearfix"></div>
                                 </form>
                             </div><!--login tab end-->
+                            
+                            
+                            
+                            
                             <div role="tabpanel" class="tab-pane <?php if($action == 'register'){echo "active";}?>" id="profile">
                                 <form action="process/register-process.php" method="post" id="registerform">
                                     

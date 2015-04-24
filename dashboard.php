@@ -35,9 +35,19 @@
 		</div>
             </div><!--breadcrumbs-->
             <div class="divide20"></div>
+            
+           
+            
 			
             <div class="container" id="dashboarddetails">
-		
+		 <div class="<?php if(Session::exists('contact-success') || Session::exists('login-success')) { echo " alert-success ";} 
+                                                      else{ echo " hidden "; }
+                                                 ?>alert animated tada">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <p><?php  if(Session::exists('contact-success')) { echo Session::flash('contact-success');}
+                                                  if(Session::exists('login-success')) { echo Session::flash('login-success');}
+                                            ?></p>
+                </div>
                 <div class="row" id="storedetails">
                     <div class="col-md-12">
                         <br>
@@ -147,78 +157,7 @@
                         <h2>Business Hours</h2>                      
                     </div>
                     <?php echo $business->getBusinessHours();?>
-                  
-                    <!--
-                     <div class="clearfix"></div><hr>
-                     
-                    <div class="col-md-3">
-                        <p class="title">Monday</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <p class="details">08:00 - 21:00</p>                      
-                    </div>
-                     
-                     <div class="clearfix"></div><hr>
-                     
-                    <div class="col-md-3">
-                        <p class="title">Tuesday</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <p class="details">08:00 - 21:00</p>                      
-                    </div>
-                     
-                      <div class="clearfix"></div><hr>
-                     
-                    <div class="col-md-3">
-                        <p class="title">Wednesday</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <p class="details">08:00 - 21:00</p>                      
-                    </div>
-                      
-                      <div class="clearfix"></div><hr>
-                      
-                    <div class="col-md-3">
-                        <p class="title">Thursday</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <p class="details">08:00 - 21:00</p>                      
-                    </div>
-                     
-                      <div class="clearfix"></div><hr>
-                      
-                    <div class="col-md-3">
-                        <p class="title">Friday</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <p class="details">08:00 - 12:00 | 14:00 - 20:00</p>                      
-                    </div>
-                     
-                      <div class="clearfix"></div><hr>
-                    <div class="col-md-3">
-                        <p class="title">Saturday</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <p class="details">CLOSED</p>                      
-                    </div>
-                     
-                      <div class="clearfix"></div><hr>
-                    
-                      <div class="col-md-3">
-                        <p class="title">Sunday</p>                      
-                    </div>
-                    
-                    <div class="col-md-9">
-                        <p class="details">CLOSED</p>                      
-                    </div>
-                     
-                      <div class="clearfix"></div><hr>-->
+                
                 </div>
               
             </div>

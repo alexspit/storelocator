@@ -11,6 +11,7 @@ class Review{
            $date_reviewed,
            $review_id,
            $responder_name,
+            $responder_id,
            $response,
            $date_responded;
            
@@ -19,12 +20,10 @@ class Review{
             
     
     public function __construct() {
-        $this->_db = DB::getInstance();  
-        
-           
+        $this->_db = DB::getInstance();       
     }
     
-     public function populate()
+    public function populate()
     {
         $sql = "SELECT u.name, u.email, r.rating_id, r.value, r.review, r.date_rated, r.status
                 FROM rating r
@@ -84,12 +83,18 @@ class Review{
        }
        else
        {
-           echo "no"; 
+           echo '<div class="row">
+                        <div class="col-md-12">
+                               <p class="details" style="margin-left:20px;"> You Store does not have any reviews yet.</p>  
+                        </div>
+                        
+                        
+                    </div>'; 
        }
        
     }
     
-     public function populateReviewDetails()
+    public function populateReviewDetails()
     {
         $sql = "SELECT ur.name as rater_name, ur.email as rater_email, us.name as responder_name, r.date_responded, r.response,r.rating_id, r.value, r.review, r.date_rated, r.status
                 FROM rating r
@@ -185,8 +190,7 @@ class Review{
        
     }
     
-     
-     public function populateReviewResponse()
+    public function populateReviewResponse()
     {
         $sql = "SELECT u.name, u.email, r.date_responded, r.response,r.rating_id, r.value, r.review, r.date_rated, r.status
                 FROM rating r
@@ -234,8 +238,9 @@ class Review{
          
           <div class="form-group">
             <label for="editor_comment" class="control-label">Response</label> 
-            <textarea rows="5" class="form-control" id="editor_comment"></textarea>
+            <textarea rows="5" name="response" class="form-control" id="editor_comment"></textarea>
              <input type="hidden" name="review_id" value="'.$this->review_id.'">
+             <input type="hidden" name="token" value="'.Token::generate().'">
           </div>
              <a class="btn btn-theme-dark pull-left" href="mailto:'.$value->email.'">Send an email instead</a>
              <a href="reviews.php" style="margin-bottom: 10px; margin-left: 10px" class="btn btn-theme-dark pull-left">Back</a>
@@ -252,12 +257,18 @@ class Review{
        }
        else
        {
-           echo "no"; 
+           echo '<div class="row">
+                        <div class="col-md-12">
+                               <p class="details" style="margin-left:20px;"> You Store does not have any ratings.</p>  
+                        </div>
+                        
+                        
+                    </div>'; 
        }
        
     }
     
-     public function getAverageRating()
+    public function getAverageRating()
     {
         $sql = "SELECT AVG(value) as avg FROM rating WHERE business_id=?";
         $parameters = array($this->business_id);
@@ -278,8 +289,7 @@ class Review{
        
     }
     
-    
-     public function getStars($rating)
+    public function getStars($rating)
     {
        $stars="";
             
@@ -308,6 +318,22 @@ class Review{
       return $stars;
         
        
+    }
+    
+    public function addResponse()
+    {
+      
+        $sql = "UPDATE rating SET responder_id='$this->responder_id',response='$this->response',date_responded=NOW(), status=1  WHERE rating_id=?";
+        $parameters = array($this->review_id);
+        $result = $this->_db->query($sql, $parameters);
+       
+        if($result->count()){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
     

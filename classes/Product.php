@@ -51,7 +51,13 @@ class Product{
        }
        else
        {
-           echo "no"; 
+            echo '<div class="row">
+                        <div class="col-md-12">
+                               <p class="details" style="margin-left:20px;"> No Products added yet.</p>  
+                        </div>
+                        
+                        
+                    </div>'; 
        }
        
     }

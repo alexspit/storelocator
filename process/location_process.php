@@ -56,14 +56,17 @@ if(Input::exists())
                                                  Input::get('lng'))); 
                 
                 if($result>0){
+                    Session::flash('location-success', "Your store page is being creating, please fill in the following details.");
                     Redirect::to('../create_store_info.php?id='.$business->business_id );
                 }
                 else{
+                    Session::flash('location-error', "Error creating Address.");
                     Redirect::to('../create_store_location.php');
                 }
                     
                }else
                {
+                   Session::flash('location-error', "Error creating Business.");
                    Redirect::to('../create_store_location.php');
                }
                 
