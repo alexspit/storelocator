@@ -142,7 +142,7 @@ class Editor{
      }
     }
     
-     public function populate()
+    public function populate()
     {
         $sql = "SELECT u.user_id, u.name, u.email, e.access_level, e.date_created
                 FROM editor e
@@ -176,10 +176,6 @@ class Editor{
                          <div class="clearfix"></div><hr>
                     </div>';
            }
-           
-           
-          
-        
        }
        else
        {
@@ -187,9 +183,7 @@ class Editor{
                         <div class="col-md-12">
                                <p class="details" style="margin-left:20px;"> No Editors added yet.</p>  
                         </div>
-                        
-                        
-                    </div>'; 
+                  </div>'; 
        }
        
     }

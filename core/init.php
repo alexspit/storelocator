@@ -1,16 +1,10 @@
 <?php
 
-
-/* 
- * This file is used to initialize all classes and functions, start sessions and set config options
- */
-//Allow user to set sessions
 if (session_status() == PHP_SESSION_NONE) 
     {
         session_start();
     }
-//Autoloading classes instead of using require once every time. Only load classes used.
-//Pass a function that runs everytime a class is accessed
+
 spl_autoload_register(function($class){
     require_once $_SERVER['DOCUMENT_ROOT'].'/GitHub/storelocator/classes/'. $class .'.php';
 });

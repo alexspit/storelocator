@@ -28,12 +28,10 @@ if(Input::exists())
                 $business->business_id = Input::get("id");
                 $business = new Business($business->business_id);
                 
-                
-                
-               $editor = new Editor();
-               $editor->business_id = Input::get("id");
-               $editor->user_id = $editor->getIDFromEmail( Input::get("editor_email"));
-               $editor->access_level = Input::get("access_level");
+                $editor = new Editor();
+                $editor->business_id = Input::get("id");
+                $editor->user_id = $editor->getIDFromEmail( Input::get("editor_email"));
+                $editor->access_level = Input::get("access_level");
                
                if($editor->user_id > 0){//If exists
                    if($editor->isAlreadyEditor())

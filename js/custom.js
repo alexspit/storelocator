@@ -85,12 +85,12 @@ $(window).load(function() {
 //parallax
 $(window).stellar({
     horizontalScrolling: false,
-    responsive: true/*,
+    responsive: true,
      scrollProperty: 'scroll',
      parallaxElements: false,
      horizontalScrolling: false,
      horizontalOffset: 0,
-     verticalOffset: 0*/
+     verticalOffset: 0
 });
 
 //owl carousel for work
@@ -159,7 +159,7 @@ $(document).ready(function() {
 jQuery(document).ready(function($) {
     $('.counter').counterUp({
         delay: 100,
-        time: 800
+        time: 1500
     });
 });
 

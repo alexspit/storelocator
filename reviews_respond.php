@@ -9,7 +9,7 @@
             $review_id = Input::get("id");              
         }
         
-        echo $review_id;
+      //  echo $review_id;
         
         $review = new Review();
         $review->review_id = $review_id;
@@ -142,7 +142,7 @@
          
           <div class="form-group">
             <label for="editor_comment" class="control-label">Response</label> 
-            <textarea rows="5" class="form-control" id="editor_comment"></textarea>
+            <textarea rows="5" class="form-control" required id="editor_comment"></textarea>
              <a class="pull-right" href="mailto:aspiteri6@gmail.com">Send an email instead</a>
           </div>
             

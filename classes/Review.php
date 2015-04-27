@@ -51,12 +51,6 @@ class Review{
                     $status = "Responded";
                     $modal = "reviews_details";
                }
-               
-               
-               
-               
-               
-               
                echo ' <div class="row reviews" id="review_'.$value->rating_id.'">
                         <div class="col-md-2">
                             <p class="details">'.$value->name.'</p>  
@@ -86,12 +80,9 @@ class Review{
            echo '<div class="row">
                         <div class="col-md-12">
                                <p class="details" style="margin-left:20px;"> You Store does not have any reviews yet.</p>  
-                        </div>
-                        
-                        
-                    </div>'; 
-       }
-       
+                        </div>                        
+                 </div>'; 
+       }   
     }
     
     public function populateReviewDetails()
@@ -247,9 +238,6 @@ class Review{
         
              <button type="submit" class="btn btn-theme-dark pull-right">Respond</button>
         </form> 
-            
-        
-          
         
            </div>';
                 
@@ -297,23 +285,18 @@ class Review{
                 
                  if($i<=$rating){
                       $stars .= '<i class="fa fa-star" ></i>';
-                    
                  }
                  else{
-                     
                      if ($i-$rating >= 1){
                         $stars .= '<i class="fa fa-star-o" ></i>'; 
                      }
                      else
                      {
                           $stars .= '<i class="fa fa-star-half-full" ></i>';
-                     }
-                     
+                     } 
                  }
               
-            }
-           
-            
+            }     
         
       return $stars;
         

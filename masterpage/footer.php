@@ -65,6 +65,19 @@
        <script src="js/dropzone.js"></script>
        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYlhbi8Dcj0i8uF22gccZ9NsM-zwQDolM"></script>
         <script src="js/custom.js" type="text/javascript"></script>
+            <script src="js/typed.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            /* Typed
+                ================================================== */
+                $(".element").each(function(){
+                    var $this = $(this);
+                    $this.typed({
+                    strings: $this.attr('data-elements').split(','),
+                    typeSpeed:50, // typing speed
+                    backDelay: 3000 // pause before backspacing
+                    });
+                });
+        </script>
 
    
        

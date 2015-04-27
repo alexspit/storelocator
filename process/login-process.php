@@ -20,34 +20,32 @@ if(Input::exists())//Check if form has been submitted
            
                 
                 if($validation->passed()){
-                $user = new User();
-                              
-                $login = $user->login(Input::get('email'), Input::get('password'));
+                    $user = new User();
+
+                    $login = $user->login(Input::get('email'), Input::get('password'));
                 
-                if($login){   
-                    
-                    if($user->isEditor()){
-                         Redirect::to('../editor_businesses.php');
-                       
-                            
+                    if($login){   
+
+                        if($user->isEditor()){                       
+                             Redirect::to('../editor_businesses.php');       
+                        }
+                        else{
+                            if($user->hasBusiness()){
+                                    Session::flash('login-success', 'Log in successful.');
+                                    Redirect::to('../dashboard.php');
+                                }
+                                else{
+                                    Session::flash('login-success', 'Log in successful. Please create a new Store to begin.');
+                                    Redirect::to('../create_store_location.php');
+                                }
+                        }
+
                     }
                     else{
-                        if($user->hasBusiness()){
-                                Session::flash('login-success', 'Log in successful.');
-                                Redirect::to('../dashboard.php');
-                            }
-                            else{
-                                Session::flash('login-success', 'Log in successful. Please create a new Store to begin.');
-                                Redirect::to('../create_store_location.php');
-                            }
+                        Session::flash('login-error', 'Failed to log in, incorrect username or password.');
+                        Redirect::to('../register.php');
                     }
-                    
                 }
-                else{
-                    Session::flash('login-error', 'Failed to log in, incorrect username or password.');
-                    Redirect::to('../register.php');
-                }
-            }
             else{
                 $errors='';
                 foreach ($validation->errors() as $error ) {

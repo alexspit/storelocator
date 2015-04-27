@@ -945,7 +945,7 @@ h1.typed-text{
 .services-wrap{
     padding-top:60px;
     padding-bottom: 40px;
-    background-color: #fff;
+    background-color: #333;
 }
 .services-box{
     clear: both;
@@ -969,10 +969,16 @@ h1.typed-text{
 }
 .services-box-info{
     padding-left: 60px;
+    
 }
 .services-box-info h4{
     font-weight: 700;
     font-size: 18px;
+    color:#AAA;
+}
+.services-box-info p{
+    
+   color:#eee;
 }
 /*services 2*/
 .service-box i{
@@ -1270,11 +1276,11 @@ ul.post-desc li + li{
 
 /*testimonials parallax*/
 .testimonials{
-    background:#333;
+    background:#eee;
     padding: 80px 0;
 }
 .testimonials .center-heading h2{
-    color:#fff;
+    color:#333;
 }
 .testimonials h4{
     color:#fff;
@@ -1293,6 +1299,10 @@ ul.post-desc li + li{
     font-size: 25px;
     font-weight: 400;
     font-style: normal;
+}
+.testimonials span{
+    color:#222;
+    
 }
 .customer-img{
     max-width:92px;
@@ -1336,7 +1346,7 @@ ul.post-desc li + li{
 #footer {
 
     background: #121214;
-    border-top: 4px solid #e1e1e1;
+    //border-top: 4px solid #e1e1e1;
     font-size: 0.9em;
     padding: 30px 0 0;
     position: absolute;
@@ -2885,7 +2895,7 @@ min-height:100%;
    position:relative;
 }
 main{
-padding-bottom: 20px;
+//padding-bottom: 20px;
 background-color: #f2f2f2;
 }
 

@@ -40,22 +40,17 @@ class DB{
        $this->_error = false;//Avoid returning an error for a previous query
        if($this->_query = $this->_pdo->prepare($sql)){//Check if the sql statement is prepared correctly
            $x = 1;
-           //echo $sql. ' prepared </br>';
+          
            if(count($parameters)){//Checking if array has data
                foreach ($parameters as $param){
-              // for ($x=1;$x<=count($parameters);$x++)  {
-               //  $this->_query->bindValue($x, $paramaters[$x]);
-              // }
+              
               $this->_query->bindValue($x, $param);
               $x++;
-              //echo $param.' binded  </br>';
-              }
-                   
-           }
-           
+              
+              }       
+           }           
            if($this->_query->execute()){
-               
-               
+                     
                $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
                $this->_count = $this->_query->rowCount();
                $this->last_inserted_id = $this->_pdo->lastInsertId();

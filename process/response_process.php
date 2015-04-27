@@ -30,7 +30,7 @@ if(Input::exists())
                 else{
                     
                    Session::flash('error', "Error sending response.");
-                       Redirect::to('../reviews_respond.php');
+                        Redirect::to('../reviews_respond.php?id='.Input::get("review_id"));
                 }
              }  
             
@@ -42,18 +42,18 @@ if(Input::exists())
                     $errors .= $error." </br>";
                 }
                  Session::flash('validation-errors', $errors);
-                       Redirect::to('../reviews_respond.php');
+                       Redirect::to('../reviews_respond.php?id='.Input::get("review_id"));
             }
     
 }else
 { 
     
-      Redirect::to('../reviews_respond.php');
+      Redirect::to('../reviews.php');
 }
     
 }
 else
 {
    
-    Redirect::to('../reviews_respond.php');
+    Redirect::to('../reviews.php');
 }
