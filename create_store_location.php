@@ -115,7 +115,7 @@
                 </div>
             
             
-	
+	<div class="divide20"></div>
         </main><!--END MAIN-->
 		
         <?php require_once("masterpage/footer.php")?>

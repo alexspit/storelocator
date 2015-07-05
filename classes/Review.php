@@ -61,7 +61,7 @@ class Review{
                             </div>   
                         </div>
                         <div class="col-md-4">
-                            <p class="details">'.substr($value->review,0,150).'</p> 
+                            <p class="details">'.substr($value->review,0,45).'</p> 
                         </div>
                         <div class="col-md-2">
                              <p class="details">'.$status.'</p> 

@@ -34,8 +34,8 @@
                 </h1>
                 <p class="lead">List your local store with us for free and we guarantee an increase in business.   </p>
                 <span class="parallax-buttons">
-                    <a href="#" class=" btn border-theme btn-lg">Create a new Store</a>
-                    <a href="#" class=" btn border-white btn-lg">Dashboard</a>
+                    <a href="create_store_location.php" class=" btn border-theme btn-lg">Create a new Store</a>
+                    <a href="dashboard.php" class=" btn border-white btn-lg">Dashboard</a>
                 </span>
             </div>
         </section><!--parallax-background-->
@@ -46,11 +46,10 @@
                     <div class="col-md-12 col-sm-12 text-center">
                         <h2 class="wow animated fadeInDown">What is <span class="colored-text">TOPSTORE</span>?</h2>
                         <p class="lead animated fadeIn">
-                            We are a creative team and make great web things since 2001 based in california.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat, ante nulla hendrerit arcu, ac tincidunt mauris lacus sed leo. vamus suscipit molestie vestibulum.
-                        </p>
+                           It gives customers the right info at the right time, whether that be driving directions to your business, hours of operations or a phone number they can click to call you on mobile phones. </p>
                         <div class="divide30"></div>
-                        <a href="#" class=" btn border-theme btn-lg">View Our Portfolio</a>
-                        <a href="#" class=" btn border-black btn-lg">Contact us today</a>
+                        <a href="register.php" class=" btn btn-theme-bg btn-lg">Register</a>
+                        <a href="#" class=" btn btn-theme-dark btn-lg">Main Application</a>
                     </div>
                 </div>
             </div>
@@ -159,7 +158,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="center-heading">
-                            <h2>What Current Users say</h2>
+                            <h2>What Our Users say</h2>
                             <span class="center-line"></span>
                         </div>
                     </div>                   
@@ -198,15 +197,15 @@
             <div class="container">               
                 <div class="row">
                     <div class="col-md-3 margin20 facts-in">
-                        <h3><i class="fa fa-users"></i><span class="counter">3323</span></h3>
+                        <h3><i class="fa fa-users"></i><span class="counter"><?php echo $user->getUserCount();?></span></h3>
                         <h4>Registered Users</h4>
                     </div><!--facts in-->
                     <div class="col-md-3 margin20 facts-in">
-                        <h3><i class="fa fa-home"></i><span class="counter">345</span></h3>
+                        <h3><i class="fa fa-home"></i><span class="counter"><?php echo $user->getStoreCount();?></span></h3>
                         <h4>Stores Listed</h4>
                     </div><!--facts in-->
                     <div class="col-md-3 margin20 facts-in">
-                        <h3><i class="fa fa-shopping-cart"></i><span class="counter">6543</span></h3>
+                        <h3><i class="fa fa-shopping-cart"></i><span class="counter"><?php echo $user->getProductCount();?></span></h3>
                         <h4>Products Listed </h4>
                     </div><!--facts in-->
                     <div class="col-md-3 margin20 facts-in">

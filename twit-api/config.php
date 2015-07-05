@@ -1,8 +1,5 @@
 <?php
-    /**
-     * Your Twitter App Info
-     */
-    
+
     // Consumer Key
     define('CONSUMER_KEY', 'bPG9maX3irsTn7EJ9SxcWUQW1');
     define('CONSUMER_SECRET', 'XzWPoMjLfv995FkdLhpH2npMmZDlkMxp92GzCRB5Y1OvO6xsH2');

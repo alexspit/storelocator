@@ -39,7 +39,7 @@
                         <div class="divide30"></div>
                         <h1 class="error-digit wow animated fadeInUp margin20"><i class="fa fa-thumbs-down"></i></h1>
                         <h2>Oopsie, the page could not be found!</h2>
-                        <p><a href="#" class="btn border-black btn-lg">Go Back</a></p>
+                        <p><a href="index.php" onclick="goBack()" class="btn border-black btn-lg">Go Back</a></p>
                     </div>
                 </div>
             </div>

@@ -70,7 +70,7 @@
                         </form>
                     </div>
                 </div> 
-                
+                <div class="divide20"></div>
                 <form action="process/info_process.php" method="post" id="storeinfo_form" >
                 <div class="row">
                     <div class="col-md-12">
@@ -244,7 +244,7 @@
             </div>
             
             
-            
+            <div class="divide20"></div>
             
 	</main><!--END MAIN-->
 		

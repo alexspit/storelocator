@@ -101,7 +101,7 @@ if(Input::exists('get'))
                                     </div>
                                     
                                     <div class="form-group">
-                                        <label for="exampleInputname">Name</label>
+                                        <label for="name">Name</label>
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name">
                                     </div>
                                     <div class="form-group">

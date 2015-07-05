@@ -126,7 +126,7 @@
                  <input class="btn btn-theme-bg pull-right" type="submit" value="Finish">
                 </form>
                 </div>
-            
+            <div class="divide20"></div>
             
 	</main><!--END MAIN-->
 		

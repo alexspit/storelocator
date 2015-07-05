@@ -148,6 +148,57 @@ class User{
         }
     }
     
+    public function getUserCount()
+    {
+        $sql = "SELECT COUNT(*) AS count FROM user";
+       
+        
+        $result = $this->_db->queryAssoc($sql);
+      
+        if ($result)
+        {
+            return (int)$result->result()[0]['count'];
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public function getStoreCount()
+    {
+        $sql = "SELECT COUNT(*) AS count FROM business";
+     
+        
+        $result = $this->_db->queryAssoc($sql);
+      
+        if ($result)
+        {
+            return (int)$result->result()[0]['count'];
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public function getProductCount()
+    {
+        $sql = "SELECT COUNT(*) AS count FROM product";
+      
+        
+        $result = $this->_db->queryAssoc($sql);
+      
+        if ($result)
+        {
+            return (int)$result->result()[0]['count'];
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     
      
 }

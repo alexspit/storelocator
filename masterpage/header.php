@@ -13,7 +13,7 @@ require_once 'core/init.php';
         }
 */
       // echo $access;
-
+     
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +76,7 @@ require_once 'core/init.php';
 					</div>
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-                                                    <li class="dropdown <?php  if(!$user->isLoggedIn() || $user->hasBusiness()){ echo "hidden ";}?>">
+                                                        <li class="dropdown <?php  if(!$user->isLoggedIn() || $user->hasBusiness()){ echo "hidden ";}?>">
                                                             <a href="./create_store_location.php">Create Store</a>
 							</li>
 							
